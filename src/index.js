@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import YandexTranslate from 'yandex-translate';
+
 import Inputfield from './components/inputField';
+import AnswerButton from './components/answerButton';
+import ConclusionMessage from './components/conclusionMessage';
 
 import apiKey from './api-key';
 
@@ -16,7 +19,12 @@ function App(props) {
   return ( 
     <div>
       <Inputfield />
-      <p>COOL div</p>
+      <AnswerButton />
+      <AnswerButton />
+      <AnswerButton />
+      <AnswerButton />
+      <AnswerButton />
+      <ConclusionMessage />
     </div>
   );
 }
