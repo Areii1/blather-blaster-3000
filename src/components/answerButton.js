@@ -1,12 +1,14 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-function AnswerButton (props) {
-  return (
+class AnswerButton extends Component {
+  render () {
+    return (
     <div>
       <button></button>
-      <p>answer</p>
+      <p>{this.props.label}</p>
     </div>
-  );
+    );
+  }
 }
 
 export default AnswerButton;

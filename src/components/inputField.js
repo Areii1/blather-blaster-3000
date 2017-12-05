@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 
-function Inputfield (props) {
-  return (
-    <input></input>
-  );
+class Inputfield extends Component {
+  render() {
+    return (
+      <input></input>
+    );
+  }
 }
 
 export default Inputfield;

@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-function ConclusionMessage (props) {
-  return (
-    <h3>You answered CORRECTLY / INCORRECTLY </h3>
-  );
+class ConclusionMessage extends Component {
+  render () {
+    return (
+      <h3>You answered CORRECTLY / INCORRECTLY </h3>
+    );
+  }
 }
 
 export default ConclusionMessage;

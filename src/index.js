@@ -15,18 +15,20 @@ yandexInstance.translate('You can burn my house, steal my car, drink my liquor f
   console.log(res.text);
 });
 
-function App(props) {
-  return ( 
-    <div>
-      <Inputfield />
-      <AnswerButton />
-      <AnswerButton />
-      <AnswerButton />
-      <AnswerButton />
-      <AnswerButton />
-      <ConclusionMessage />
-    </div>
-  );
+class App extends Component {
+  render () {
+    return ( 
+      <div>
+        <Inputfield />
+        <AnswerButton label="korean" />
+        <AnswerButton label="english" />
+        <AnswerButton label="finnish" />
+        <AnswerButton />
+        <AnswerButton />
+        <ConclusionMessage />
+      </div>
+    );
+  }
 }
 
 ReactDOM.render(<App />, document.getElementById('root'));
