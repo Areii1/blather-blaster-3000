@@ -23,9 +23,9 @@ class App extends Component {
         <AnswerButton label="korean" />
         <AnswerButton label="english" />
         <AnswerButton label="finnish" />
-        <AnswerButton />
-        <AnswerButton />
-        <ConclusionMessage />
+        <AnswerButton label="portuguese" />
+        <AnswerButton label="swedish" />
+        <ConclusionMessage label="You answered correctly" />
       </div>
     );
   }
