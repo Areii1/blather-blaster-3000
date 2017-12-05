@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import YandexTranslate from 'yandex-translate';
+import Inputfield from './components/inputField';
 
 import apiKey from './api-key';
-
-console.log(apiKey);
 
 const yandexInstance = YandexTranslate(apiKey);
 console.log(yandexInstance);
@@ -13,10 +12,10 @@ yandexInstance.translate('You can burn my house, steal my car, drink my liquor f
   console.log(res.text);
 });
 
-function App () {
-  return (
+function App(props) {
+  return ( 
     <div>
-      <h1>moimoi</h1>
+      <Inputfield />
       <p>COOL div</p>
     </div>
   );
