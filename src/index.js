@@ -11,24 +11,40 @@ import apiKey from './api-key';
 const yandexInstance = YandexTranslate(apiKey);
 console.log(yandexInstance);
 
-yandexInstance.translate('You can burn my house, steal my car, drink my liquor from an old fruitjar.', { to: 'fi' }, function(err, res) {
-  console.log(res.text);
-});
-
 class App extends Component {
-  render () {
-    return ( 
-      <div>
-        <Inputfield />
-        <AnswerButton label="korean" />
-        <AnswerButton label="english" />
-        <AnswerButton label="finnish" />
-        <AnswerButton label="portuguese" />
-        <AnswerButton label="swedish" />
-        <ConclusionMessage label="You answered correctly" />
-      </div>
-    );
+    constructor(props) {
+      super(props);
+      
+      this.state = {
+        translatedText : ''
+      }
+    }
+    render () {
+      return ( 
+        <div>
+          <Inputfield />
+          <AnswerButton label="korean" />
+          <AnswerButton label="english" />
+          <AnswerButton label="finnish" />
+          <AnswerButton label="portuguese" />
+          <AnswerButton label="swedish" />
+          <ConclusionMessage id="hehee" label="You answered correctly" />
+          <p></p>
+        </div>
+      );
+    }
+
+/*
+  translateText(text) {
+    yandexInstance.translate(text, { to: 'fi' }, function(err, res) {
+      console.log(res.text);
+      <p>{res.text}</p>
+    });
   }
-}
+*/
+  }
+
+
+export default App;
 
 ReactDOM.render(<App />, document.getElementById('root'));
