@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
 
 class Inputfield extends Component {
   constructor(props) {
@@ -9,25 +8,17 @@ class Inputfield extends Component {
       textFieldValue : "",
       textFieldValueSubmitted: ""
     }
-
     this.handleFieldValueChange = this.handleFieldValueChange.bind(this);
-    this.submit = this.submit.bind(this);
   }
 
   handleFieldValueChange(event) {
     this.setState({textFieldValue: event.target.value});
-
     if (event.key === 'Enter') {
       console.log("enter was pressed");
-      this.state.textFieldValueSubmitted = this.state.textFieldValue;
+      this.setState({textFieldValueSubmitted: this.state.textFieldValue})
       console.log(this.state.textFieldValueSubmitted);
     }
   }
-
-  submit(event) {
-
-  }
-
 
   render() {
     return (
@@ -45,6 +36,5 @@ class Inputfield extends Component {
   }
 
 }
-
 
 export default Inputfield;
