@@ -4,8 +4,7 @@ class AnswerButton extends Component {
   render () {
     return (
     <div>
-      <button></button>
-      <p>{this.props.label}</p>
+      <button>{this.props.label}</button>
     </div>
     );
   }

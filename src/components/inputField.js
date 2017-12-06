@@ -6,7 +6,6 @@ class Inputfield extends Component {
 
     this.state = {
       textFieldValue : "",
-      textFieldValueSubmitted: ""
     }
     this.handleFieldValueChange = this.handleFieldValueChange.bind(this);
   }
@@ -14,9 +13,8 @@ class Inputfield extends Component {
   handleFieldValueChange(event) {
     this.setState({textFieldValue: event.target.value});
     if (event.key === 'Enter') {
-      console.log("enter was pressed");
-      this.setState({textFieldValueSubmitted: this.state.textFieldValue})
-      console.log(this.state.textFieldValueSubmitted);
+      console.log("handleFielValueChange sisällä", this.state.textFieldValue);
+      this.props.jokus(this.state.textFieldValue);
     }
   }
 
@@ -30,11 +28,9 @@ class Inputfield extends Component {
           placeholder="kirjota ny jotai"
           value={this.state.textFieldValue}
           />
-        <p>{this.state.textFieldValueSubmitted} </p> 
       </div>
     );
   }
-
 }
 
 export default Inputfield;
