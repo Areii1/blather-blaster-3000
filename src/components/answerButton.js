@@ -1,10 +1,24 @@
 import React, { Component } from 'react';
 
 class AnswerButton extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      buttonClicked: true
+    }
+
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick() {
+    console.log(this.props.label + this.props.id + ": clicked");
+    this.props.clicked(this.props.id);
+  }
   render () {
     return (
     <div>
-      <button>{this.props.label}</button>
+      <button onClick={this.handleClick}>{this.props.label}</button>
     </div>
     );
   }

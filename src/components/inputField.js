@@ -7,6 +7,7 @@ class Inputfield extends Component {
     this.state = {
       textFieldValue : "",
     }
+    
     this.handleFieldValueChange = this.handleFieldValueChange.bind(this);
   }
 
@@ -20,6 +21,7 @@ class Inputfield extends Component {
   render() {
     return (
       <div>
+        <h3>Write, press enter and take a guess :)</h3>
         <input
           type="text"
           onChange={this.handleFieldValueChange}
