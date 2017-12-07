@@ -9,10 +9,27 @@ import TranslatedString from './components/translatedString';
 
 import apiKey from './api-key';
 
+const importantLangList = {
+  Japanese:	'ja',
+  Esperanto:	'eo',
+  Swedish:	'sv',
+  Estonian:	'et',
+  Latin:	'la',
+  Finnish:	'fi',
+  Chinese:	'zh',
+  Greek:	'el',
+  Russian:	'ru',
+  German: 'de',
+  Afrikaans: 'af',
+}
+
+const importantLangTable = ['Japanese', 'Esperanto', 'Swedish',
+'Estonian', 'Latin', 'Finnish', 'Chinese', 'Greek',
+ 'Russian', 'German', 'Afrikaans'
+];
 
 const importantLangKeyTable = ['ja', 'eo', 'sv', 'et', 'la',
-'fi', 'zh', 'el', 'ru', 'de', 'af'
-];
+'fi', 'zh', 'el', 'ru', 'de', 'af'];
 
 const yandexInstance = YandexTranslate(apiKey);
 
@@ -30,7 +47,10 @@ class App extends Component {
   }
 
   getRandomLang() {
-    return importantLangKeyTable[(Math.floor(Math.random() * 10) + 1)];
+    var randNum = (Math.floor(Math.random() * 10) + 1);
+    var randLangKey = importantLangKeyTable[randNum];
+
+    return randLangKey;
   }
 
   translateText(submittedText) {
@@ -48,11 +68,17 @@ class App extends Component {
       <div>
         <Inputfield transable={this.translateText}/>
         <TranslatedString printableTranslation={this.state.resultText}/>
-        <AnswerButton label="korean" />
-        <AnswerButton label="english" />
-        <AnswerButton label="finnish" />
-        <AnswerButton label="portuguese" />
-        <AnswerButton label="swedish" />
+        <AnswerButton label={importantLangTable[0]} />
+        <AnswerButton label={importantLangTable[1]} />
+        <AnswerButton label={importantLangTable[2]} />
+        <AnswerButton label={importantLangTable[3]} />
+        <AnswerButton label={importantLangTable[4]} />
+        <AnswerButton label={importantLangTable[5]} />
+        <AnswerButton label={importantLangTable[6]} />
+        <AnswerButton label={importantLangTable[7]} />
+        <AnswerButton label={importantLangTable[8]} />
+        <AnswerButton label={importantLangTable[9]} />
+        <AnswerButton label={importantLangTable[10]} />
         <ConclusionMessage label="You answered correctly" />
       </div>
     );
