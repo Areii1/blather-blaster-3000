@@ -24,7 +24,7 @@ class Inputfield extends Component {
           type="text"
           onChange={this.handleFieldValueChange}
           onKeyPress={this.handleFieldValueChange}
-          placeholder="kirjota ny jotai"
+          placeholder="tell me something"
           value={this.state.textFieldValue}
           />
       </div>

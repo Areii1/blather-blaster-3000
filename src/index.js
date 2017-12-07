@@ -6,10 +6,12 @@ import Inputfield from './components/inputField';
 import AnswerButton from './components/answerButton';
 import ConclusionMessage from './components/conclusionMessage';
 import TranslatedString from './components/translatedString';
+import languageList from './langList';
 
 import apiKey from './api-key';
 
 const yandexInstance = YandexTranslate(apiKey);
+
 
 class App extends Component {
   constructor(props) {
@@ -24,9 +26,14 @@ class App extends Component {
     this.translateText = this.translateText.bind(this); 
   }
 
-  translateText(para) {
-    this.setState({textFieldValueSubmitted: para}, () => {
-      yandexInstance.translate(this.state.textFieldValueSubmitted, { to: 'fi' }, (err, res) => {
+  getRandomLang() {
+    
+  }
+
+  translateText(submittedText) {
+    this.getRandomLang();
+    this.setState({textFieldValueSubmitted: submittedText}, () => {
+      yandexInstance.translate(this.state.textFieldValueSubmitted, { to: 'az' }, (err, res) => {
         this.setState({resultText: res.text});
       });
     });
