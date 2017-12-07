@@ -9,20 +9,6 @@ import TranslatedString from './components/translatedString';
 
 import apiKey from './api-key';
 
-const importantLangList = {
-  Japanese:	'ja',
-  Esperanto:	'eo',
-  Swedish:	'sv',
-  Estonian:	'et',
-  Latin:	'la',
-  Finnish:	'fi',
-  Chinese:	'zh',
-  Greek:	'el',
-  Russian:	'ru',
-  German: 'de',
-  Afrikaans: 'af',
-};
-
 const importantLangTable = ['Japanese', 'Esperanto', 'Swedish',
 'Estonian', 'Latin', 'Finnish', 'Chinese', 'Greek',
  'Russian', 'German', 'Afrikaans'
@@ -42,8 +28,6 @@ class App extends Component {
       textFieldValueSubmitted: "",
       resultText: "",
       rightAnswerKey: "",
-      rightAnswerGiven: false,
-      wrongAnswerGiven: false,
       AnswerMessage: ""
     }
 
@@ -62,22 +46,21 @@ class App extends Component {
     console.log("click reached index");
     console.log("Right ANSWER: " + this.state.rightAnswerKey);
 
-    if (importantLangKeyTable[buttonClicked] == this.state.rightAnswerKey) {
+    if (importantLangKeyTable[buttonClicked] === this.state.rightAnswerKey) {
       this.setState({AnswerMessage: "You are absolutely RIGHT >:))), kudos to you my friend"}, () => {
-        console.log("inside clicked : rightanswerGiben: " + this.state.rightAnswerGiven);
+        console.log("inside clicked : rightanswerGiven: " + this.state.rightAnswerGiven);
       });
-      console.log("answer was RIGHT");
     }
     else {
       console.log("answer was WRONG");
       this.setState({AnswerMessage: ("NO IT's " + this.state.rightAnswerKey + " you dumbass :D:D:D:")}, () => {
-        console.log("inside clocked: wronganswerGiben: " + this.state.wrongAnswerGiven);
+        console.log("inside clocked: wronganswerGiven: " + this.state.wrongAnswerGiven);
       });
     }
   }
 
   translateText(submittedText) {
-    console.log("submit reached index")
+    console.log("submit reached index");
     var randLangKey = this.getRandomLang();
     this.setState({textFieldValueSubmitted: submittedText}, () => {
       yandexInstance.translate(this.state.textFieldValueSubmitted, { to: randLangKey }, (err, res) => {
