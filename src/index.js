@@ -4,6 +4,7 @@ import YandexTranslate from 'yandex-translate';
 
 import Inputfield from './components/inputField';
 import AnswerButton from './components/answerButton';
+import AnswerButtonList from './components/answerButtonList';
 import ConclusionMessage from './components/conclusionMessage';
 import TranslatedString from './components/translatedString';
 
@@ -32,29 +33,26 @@ class App extends Component {
     }
 
     this.translateText = this.translateText.bind(this);
-    this.clicked = this.clicked.bind(this);
+    this.checkAnswer = this.checkAnswer.bind(this);
   }
 
   getRandomLang() {
-    var randNum = (Math.floor(Math.random() * 10) + 1);
-    var randLangKey = importantLangKeyTable[randNum];
-
-    return randLangKey;
+    const randNum = (Math.floor(Math.random() * 10) + 1);
+    return importantLangKeyTable[randNum];
   }
 
-  clicked(buttonClicked) {
+  checkAnswer(buttonClicked) {
     console.log("click reached index");
     console.log("Right ANSWER: " + this.state.rightAnswerKey);
 
     if (importantLangKeyTable[buttonClicked] === this.state.rightAnswerKey) {
       this.setState({AnswerMessage: "You are absolutely RIGHT >:))), kudos to you my friend"}, () => {
-        console.log("inside clicked : rightanswerGiven: " + this.state.rightAnswerGiven);
+        console.log("inside checkAnswer : rightanswerGiven: " + this.state.rightAnswerGiven);
       });
     }
     else {
-      console.log("answer was WRONG");
       this.setState({AnswerMessage: ("NO IT's " + this.state.rightAnswerKey + " you dumbass :D:D:D:")}, () => {
-        console.log("inside clocked: wronganswerGiven: " + this.state.wrongAnswerGiven);
+        console.log("inside checkAnswer: wronganswerGiven: " + this.state.wrongAnswerGiven);
       });
     }
   }
@@ -66,6 +64,7 @@ class App extends Component {
       yandexInstance.translate(this.state.textFieldValueSubmitted, { to: randLangKey }, (err, res) => {
         this.setState({resultText: res.text});
         this.setState({rightAnswerKey: randLangKey});
+        this.setState({gameprocess: 1});
       });
     });
   }
@@ -73,31 +72,19 @@ class App extends Component {
   render() {
     return ( 
       <div>
-        <Inputfield transable={this.translateText}/>
-        <TranslatedString printableTranslation={this.state.resultText}/>
-        <AnswerButton label={importantLangTable[0]} 
-        id={0} clicked={this.clicked} />
-        <AnswerButton label={importantLangTable[1]}
-        id={1} clicked={this.clicked}/>
-        <AnswerButton label={importantLangTable[2]}
-        id={2} clicked={this.clicked}/>
-        <AnswerButton label={importantLangTable[3]}
-        id={3} clicked={this.clicked}/>
-        <AnswerButton label={importantLangTable[4]}
-        id={4} clicked={this.clicked}/>
-        <AnswerButton label={importantLangTable[5]}
-        id={5} clicked={this.clicked}/>
-        <AnswerButton label={importantLangTable[6]}
-        id={6} clicked={this.clicked}/>
-        <AnswerButton label={importantLangTable[7]}
-        id={7} clicked={this.clicked}/>
-        <AnswerButton label={importantLangTable[8]}
-        id={8} clicked={this.clicked}/>
-        <AnswerButton label={importantLangTable[9]}
-        id={9} clicked={this.clicked}/>
-        <AnswerButton label={importantLangTable[10]}
-        id={10} clicked={this.clicked}/>
-        <ConclusionMessage label={this.state.AnswerMessage} />
+        <Inputfield 
+          transable={this.translateText} 
+        />
+        <TranslatedString 
+         printableTranslation={this.state.resultText}
+        />
+        <AnswerButtonList 
+          label={importantLangTable} 
+          checkAnswer={this.checkAnswer}
+        />
+        <ConclusionMessage 
+         label={this.state.AnswerMessage} 
+        />
       </div>
     );
   }

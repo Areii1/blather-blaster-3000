@@ -13,8 +13,9 @@ class AnswerButton extends Component {
 
   handleClick() {
     console.log(this.props.label + this.props.id + ": clicked");
-    this.props.clicked(this.props.id);
+    this.props.checkAnswer(this.props.id);
   }
+  
   render () {
     return (
     <div>
