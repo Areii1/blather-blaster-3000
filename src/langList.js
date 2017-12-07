@@ -94,4 +94,19 @@ const languageList = {
   Malay: 'ms',		
 }
 
-export default languageList;
+const importantLangList = {
+  Japanese:	'ja',
+  Esperanto:	'eo',
+  Swedish:	'sv',
+  Estonian:	'et',
+  Latin:	'la',
+  Finnish:	'fi',
+  Chinese:	'zh',
+  Greek:	'el',
+  Russian:	'ru',
+  German: 'de',
+  Afrikaans: 'af',
+}
+
+
+export const importantLangList;

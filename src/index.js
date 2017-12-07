@@ -6,12 +6,15 @@ import Inputfield from './components/inputField';
 import AnswerButton from './components/answerButton';
 import ConclusionMessage from './components/conclusionMessage';
 import TranslatedString from './components/translatedString';
-import languageList from './langList';
 
 import apiKey from './api-key';
 
-const yandexInstance = YandexTranslate(apiKey);
 
+const importantLangKeyTable = ['ja', 'eo', 'sv', 'et', 'la',
+'fi', 'zh', 'el', 'ru', 'de', 'af'
+];
+
+const yandexInstance = YandexTranslate(apiKey);
 
 class App extends Component {
   constructor(props) {
@@ -27,14 +30,15 @@ class App extends Component {
   }
 
   getRandomLang() {
-    
+    return importantLangKeyTable[(Math.floor(Math.random() * 10) + 1)];
   }
 
   translateText(submittedText) {
-    this.getRandomLang();
+    var randLangKey = this.getRandomLang();
     this.setState({textFieldValueSubmitted: submittedText}, () => {
-      yandexInstance.translate(this.state.textFieldValueSubmitted, { to: 'az' }, (err, res) => {
+      yandexInstance.translate(this.state.textFieldValueSubmitted, { to: randLangKey }, (err, res) => {
         this.setState({resultText: res.text});
+        console.log(randLangKey);
       });
     });
   }
