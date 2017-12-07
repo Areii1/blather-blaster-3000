@@ -41,11 +41,14 @@ class App extends Component {
       gameprocess: 0,
       textFieldValueSubmitted: "",
       resultText: "",
-      rightAnswerKey: ""
+      rightAnswerKey: "",
+      rightAnswerGiven: false,
+      wrongAnswerGiven: false,
+      AnswerMessage: ""
     }
 
     this.translateText = this.translateText.bind(this);
-    this.clicked = this.clicked.bind(this); 
+    this.clicked = this.clicked.bind(this);
   }
 
   getRandomLang() {
@@ -60,10 +63,16 @@ class App extends Component {
     console.log("Right ANSWER: " + this.state.rightAnswerKey);
 
     if (importantLangKeyTable[buttonClicked] == this.state.rightAnswerKey) {
+      this.setState({AnswerMessage: "You are absolutely RIGHT >:))), kudos to you my friend"}, () => {
+        console.log("inside clicked : rightanswerGiben: " + this.state.rightAnswerGiven);
+      });
       console.log("answer was RIGHT");
     }
     else {
       console.log("answer was WRONG");
+      this.setState({AnswerMessage: ("NO IT's " + this.state.rightAnswerKey + " you dumbass :D:D:D:")}, () => {
+        console.log("inside clocked: wronganswerGiben: " + this.state.wrongAnswerGiven);
+      });
     }
   }
 
@@ -105,7 +114,7 @@ class App extends Component {
         id={9} clicked={this.clicked}/>
         <AnswerButton label={importantLangTable[10]}
         id={10} clicked={this.clicked}/>
-        <ConclusionMessage label="You answered correctly" />
+        <ConclusionMessage label={this.state.AnswerMessage} />
       </div>
     );
   }
