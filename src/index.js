@@ -17,36 +17,26 @@ class App extends Component {
     
     this.state = {
       gameprocess: 0,
-      translatedText : '',
       textFieldValueSubmitted: '',
       resultText: ""
     }
 
-    this.translateText = this.translateText.bind(this);
-    this.joku = this.joku.bind(this);    
+    this.translateText = this.translateText.bind(this); 
   }
 
-  translateText() {
-    console.log("joku", this);
-    yandexInstance.translate(this.state.textFieldValueSubmitted, { to: 'fi' }, (err, res) => {
-      console.log("sisällätrans", this)
-      console.log(res.text);
-      this.setState({resultText: res.text});
-      console.log("resultText: ", this.state.resultText);
+  translateText(para) {
+    this.setState({textFieldValueSubmitted: para}, () => {
+      yandexInstance.translate(this.state.textFieldValueSubmitted, { to: 'fi' }, (err, res) => {
+        this.setState({resultText: res.text});
+      });
     });
-  }
-
-  joku(para) {
-    this.setState({textFieldValueSubmitted: para});
-    console.log("jokun sisällä", this.state.textFieldValueSubmitted);
-    this.translateText();
   }
       
   render() {
     return ( 
       <div>
-        <Inputfield jokus={this.joku}/>
-        <TranslatedString transStr={this.state.resultText}/>
+        <Inputfield transable={this.translateText}/>
+        <TranslatedString printableTranslation={this.state.resultText}/>
         <AnswerButton label="korean" />
         <AnswerButton label="english" />
         <AnswerButton label="finnish" />

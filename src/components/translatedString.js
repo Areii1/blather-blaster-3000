@@ -10,7 +10,7 @@ class TranslatedString extends Component {
   render () {
     return (
       <div>
-        <p>{this.props.transStr}</p>
+        <p>{this.props.printableTranslation}</p>
       </div>
     );
   }

@@ -13,8 +13,7 @@ class Inputfield extends Component {
   handleFieldValueChange(event) {
     this.setState({textFieldValue: event.target.value});
     if (event.key === 'Enter') {
-      console.log("handleFielValueChange sisällä", this.state.textFieldValue);
-      this.props.jokus(this.state.textFieldValue);
+      this.props.transable(this.state.textFieldValue);
     }
   }
 
