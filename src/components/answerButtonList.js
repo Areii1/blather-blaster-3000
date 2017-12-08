@@ -8,7 +8,7 @@ function AnswerButtonList(props) {
         <AnswerButton 
           label={props.label[number]}
           checkAnswer={props.checkAnswer}
-          id={number}
+          number={number}
         />
     );
 

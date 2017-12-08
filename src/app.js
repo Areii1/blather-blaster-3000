@@ -1,16 +1,13 @@
 import React, { Component } from 'react';
 import YandexTranslate from 'yandex-translate';
-/*import VoiceRSS from './voicerss-tts-min';*/
 
 import Inputfield from './components/inputField';
-import AnswerButton from './components/answerButton';
 import AnswerButtonList from './components/answerButtonList';
 import ConclusionMessage from './components/conclusionMessage';
 import TranslatedString from './components/translatedString';
 import PlayerRender from './components/playerRender';
 
 import YandexApiKey from './yandex-api-key';
-import RssApiKey from './rss-api-key';
 
 const importantLangTable = ['Japanese', 'Esperanto', 'Swedish',
 'Estonian', 'Latin', 'Finnish', 'Chinese', 'Greek',
@@ -22,46 +19,6 @@ const importantLangKeyTable = ['ja', 'eo', 'sv', 'et', 'la',
 
 const yandexInstance = YandexTranslate(YandexApiKey);
 
-
-/*DOESTN WORK*/ 
-/*
-const whadup = VoiceRSS.speech({
-  key: RssApiKey,
-  src: 'Hello, world!',
-  hl: 'en-us',
-  r: 0, 
-  c: 'mp3',
-  f: '44khz_16bit_stereo',
-  ssml: false
-});
-*/
-
-/*DOESTN WORK*/ 
-/*
-var mpg321 = require('mpg321');
- 
-var
-file = './hurroo.mp3',
-player = mpg321().remote();
- 
-// infinity loop 
-player.play(file);
-player.on('end', function () {
-  console.log('end');
-  player.play(file);
-});
- 
-// SIGINT hack 
-process.on('SIGINT', function () {
-  process.exit();
-});
- 
-// SIGINT hack 
-process.on('SIGINT', function (data) {
-  process.exit();
-});
-*/
-
 class App extends Component {
   constructor(props) {
     super(props);
@@ -72,6 +29,7 @@ class App extends Component {
       resultText: "",
       rightAnswerKey: "",
       AnswerMessage: "",
+      userAnsweredRight: false,
       player: {}
     }
 
@@ -92,13 +50,18 @@ class App extends Component {
       this.setState({AnswerMessage: "You are absolutely RIGHT >:))), kudos to you my friend"}, () => {
         console.log("inside checkAnswer : rightanswerGiven: " + this.state.rightAnswerGiven);
       });
-      this.setState((state) => ({gameProcess: state.gameProcess + 1}));
+      if (this.state.gameProcess === 1) {
+        this.setState((state) => ({gameProcess: state.gameProcess + 1}));        
+      } 
+      this.setState({userAnsweredRight: true});
     }
     else {
       this.setState({AnswerMessage: ("NO IT's " + this.state.rightAnswerKey + " you dumbass :D:D:D:")}, () => {
         console.log("inside checkAnswer: wronganswerGiven: " + this.state.wrongAnswerGiven);
       });
-      this.setState((state) => ({gameProcess: state.gameProcess + 1}));
+      if (this.state.gameProcess === 1) {
+        this.setState((state) => ({gameProcess: state.gameProcess + 1}));        
+      }
     }
   }
 
@@ -111,7 +74,9 @@ class App extends Component {
         this.setState({rightAnswerKey: randLangKey});
       });
     });
-    this.setState((state) => ({gameProcess: state.gameProcess + 1}));
+    if (this.state.gameProcess === 0) {
+      this.setState((state) => ({gameProcess: state.gameProcess + 1}));        
+    }
   }
 
   render() {
@@ -119,7 +84,6 @@ class App extends Component {
     const numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
     return ( 
       <div>
-        <audio src="./hurroo.mp3">trying to render audio</audio>
         <Inputfield 
           transable={this.translateText} 
         />
@@ -136,7 +100,8 @@ class App extends Component {
         />
 
         <PlayerRender 
-        gameProcess={this.state.gameProcess}
+          gameProcess={this.state.gameProcess}
+          userAnsweredRight={this.state.userAnsweredRight}
         />
       </div>
     );
