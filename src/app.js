@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
 import YandexTranslate from 'yandex-translate';
 /*import VoiceRSS from './voicerss-tts-min';*/
-import ReactPlayer from 'react-player';
-
 
 import Inputfield from './components/inputField';
 import AnswerButton from './components/answerButton';
 import AnswerButtonList from './components/answerButtonList';
 import ConclusionMessage from './components/conclusionMessage';
 import TranslatedString from './components/translatedString';
+import PlayerRender from './components/playerRender';
 
 import YandexApiKey from './yandex-api-key';
 import RssApiKey from './rss-api-key';
@@ -78,7 +77,6 @@ class App extends Component {
 
     this.translateText = this.translateText.bind(this);
     this.checkAnswer = this.checkAnswer.bind(this);
-    this.playerRender = this.playerRender.bind(this);
   }
 
   getRandomLang() {
@@ -93,14 +91,14 @@ class App extends Component {
     if (importantLangKeyTable[buttonClicked] === this.state.rightAnswerKey) {
       this.setState({AnswerMessage: "You are absolutely RIGHT >:))), kudos to you my friend"}, () => {
         console.log("inside checkAnswer : rightanswerGiven: " + this.state.rightAnswerGiven);
-        this.setState((state) => ({gameProcess: state.gameProcess + 1}));
       });
+      this.setState((state) => ({gameProcess: state.gameProcess + 1}));
     }
     else {
       this.setState({AnswerMessage: ("NO IT's " + this.state.rightAnswerKey + " you dumbass :D:D:D:")}, () => {
         console.log("inside checkAnswer: wronganswerGiven: " + this.state.wrongAnswerGiven);
-        this.setState((state) => ({gameProcess: state.gameProcess + 1}));
       });
+      this.setState((state) => ({gameProcess: state.gameProcess + 1}));
     }
   }
 
@@ -111,19 +109,11 @@ class App extends Component {
       yandexInstance.translate(this.state.textFieldValueSubmitted, { to: randLangKey }, (err, res) => {
         this.setState({resultText: res.text});
         this.setState({rightAnswerKey: randLangKey});
-        this.setState((state) => ({gameProcess: state.gameProcess + 1}));
       });
     });
+    this.setState((state) => ({gameProcess: state.gameProcess + 1}));
   }
-  
-  playerRender() {
-    console.log("player render: GamePROCESS: " + this.state.gameProcess);
-    if (this.state.gameProcess == 2) {
-      this.setState({player: (<ReactPlayer url='https://www.youtube.com/watch?v=4uEnNSclcqIh' playing={true} />)});
-    }
-    else return null;
-  }
-  
+
   render() {
     console.log(this.state.gameProcess + ": gameProcess");
     const numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
@@ -143,6 +133,10 @@ class App extends Component {
         />
         <ConclusionMessage 
          label={this.state.AnswerMessage}
+        />
+
+        <PlayerRender 
+        gameProcess={this.state.gameProcess}
         />
       </div>
     );
