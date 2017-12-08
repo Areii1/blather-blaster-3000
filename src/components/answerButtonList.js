@@ -5,7 +5,8 @@ function AnswerButtonList(props) {
 
     const numbers = props.numbers;
     const listItems = numbers.map((number) =>
-        <AnswerButton 
+        <AnswerButton
+          key={number}
           label={props.label[number]}
           checkAnswer={props.checkAnswer}
           number={number}

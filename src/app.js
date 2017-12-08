@@ -25,7 +25,6 @@ class App extends Component {
     
     this.state = {
       gameProcess: 0,
-      textFieldValueSubmitted: "",
       resultText: "",
       rightAnswerKey: "",
       AnswerMessage: "",
@@ -66,26 +65,24 @@ class App extends Component {
   }
 
   translateText(submittedText) {
-    console.log("submit reached index");
-    var randLangKey = this.getRandomLang();
-    this.setState({textFieldValueSubmitted: submittedText}, () => {
-      yandexInstance.translate(this.state.textFieldValueSubmitted, { to: randLangKey }, (err, res) => {
-        this.setState({resultText: res.text});
-        this.setState({rightAnswerKey: randLangKey});
+    const randLangKey = this.getRandomLang();
+      yandexInstance.translate(submittedText, { to: randLangKey }, (err, res) => {
+        this.setState({
+          resultText: res.text,
+          rightAnswerKey: randLangKey
+        })
       });
-    });
     if (this.state.gameProcess === 0) {
       this.setState((state) => ({gameProcess: state.gameProcess + 1}));        
     }
   }
 
   render() {
-    console.log(this.state.gameProcess + ": gameProcess");
     const numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
     return ( 
       <div>
         <Inputfield 
-          transable={this.translateText} 
+          onSubmit={this.translateText} 
         />
         <TranslatedString 
          printableTranslation={this.state.resultText}
