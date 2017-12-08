@@ -18,7 +18,6 @@ const importantLangKeyTable = ['ja', 'eo', 'sv', 'et', 'la',
 
 const numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
-
 const yandexInstance = YandexTranslate(YandexApiKey);
 
 class App extends Component {
@@ -44,38 +43,35 @@ class App extends Component {
   }
 
   incrementGameProcess() {
-    this.setState((state) => ({gameProcess: state.gameProcess + 1}));
+    if (this.state.gameProcess === 2) this.setState({gameProcess: 0});
+    else this.setState((state) => ({gameProcess: state.gameProcess + 1}));
+    console.log("after incrementGameProcess : " + this.state.gameProcess);
   }
 
-  checkAnswer(buttonClicked) {
-    if (importantLangKeyTable[buttonClicked] === this.state.rightAnswerKey) {
-      if (this.state.gameProcess === 1) {
-        this.incrementGameProcess()    
-      } 
+  checkAnswer(clickedButtonIndex) {
+    if (this.state.gameProcess === 1) {
+      if (importantLangKeyTable[clickedButtonIndex] === this.state.rightAnswerKey)
       this.setState({userAnsweredRight: true});
-    }
-    else {
-      if (this.state.gameProcess === 1) {
-        this.incrementGameProcess()       
-      }
+      /* */
+      this.incrementGameProcess();
     }
   }
 
   translateText(submittedText) {
-    const randLangKey = this.getRandomLang();
-    yandexInstance.translate(submittedText, { to: randLangKey }, (err, res) => {
-      this.setState({
-        resultText: res.text,
-        rightAnswerKey: randLangKey
-      })
-    });
     if (this.state.gameProcess === 0) {
-      this.incrementGameProcess()        
+      const randLangKey = this.getRandomLang();
+      yandexInstance.translate(submittedText, { to: randLangKey }, (err, res) => {
+        this.setState({
+          resultText: res.text,
+          rightAnswerKey: randLangKey
+        })
+      });
+      this.incrementGameProcess();      
     }
+    else this.incrementGameProcess();
   }
 
   rightAnswer() {
-    console.log("inside RightAnswer")
     var rightAnswerIndex = 0;
     for (var i = 0; i > importantLangKeyTable.length; i++) {
       if (this.state.rightAnswerKey === importantLangKeyTable[i]) rightAnswerIndex = i;
@@ -84,6 +80,7 @@ class App extends Component {
   }
 
   render() {
+    console.log("gameProcess inside render : " + this.state.gameProcess);
 
     return ( 
       <div>

@@ -14,8 +14,8 @@ class Inputfield extends Component {
   handleFieldValueChange(event) {
     this.setState({textFieldValue: event.target.value});
     if (event.key === 'Enter') {
-      console.log(this.state.textFieldValue + " : was submitted")
       this.props.onSubmit(this.state.textFieldValue);
+      this.setState({textFieldValue: ""});
     }
   }
 
