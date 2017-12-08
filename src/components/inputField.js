@@ -22,12 +22,12 @@ class Inputfield extends Component {
   render() {
     return (
       <div>
-        <h3>Write, press enter and take a guess :)</h3>
+        <h3>Write something something funny</h3>
         <input
           type="text"
           onChange={this.handleFieldValueChange}
           onKeyPress={this.handleFieldValueChange}
-          placeholder="tell me something"
+          placeholder="aaanything"
           value={this.state.textFieldValue}
           />
       </div>

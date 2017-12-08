@@ -5,7 +5,6 @@ import Inputfield from './components/inputField';
 import AnswerButtonList from './components/answerButtonList';
 import ConclusionMessage from './components/conclusionMessage';
 import TranslatedString from './components/translatedString';
-import PlayerRender from './components/playerRender';
 
 import YandexApiKey from './yandex-api-key';
 
@@ -17,6 +16,9 @@ const importantLangTable = ['Japanese', 'Esperanto', 'Swedish',
 const importantLangKeyTable = ['ja', 'eo', 'sv', 'et', 'la',
 'fi', 'zh', 'el', 'ru', 'de', 'af'];
 
+const numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+
 const yandexInstance = YandexTranslate(YandexApiKey);
 
 class App extends Component {
@@ -27,13 +29,13 @@ class App extends Component {
       gameProcess: 0,
       resultText: "",
       rightAnswerKey: "",
-      AnswerMessage: "",
       userAnsweredRight: false,
-      player: {}
     }
 
     this.translateText = this.translateText.bind(this);
     this.checkAnswer = this.checkAnswer.bind(this);
+    this.rightAnswer = this.rightAnswer.bind(this);
+    this.incrementGameProcess = this.incrementGameProcess.bind(this);
   }
 
   getRandomLang() {
@@ -41,25 +43,20 @@ class App extends Component {
     return importantLangKeyTable[randNum];
   }
 
-  checkAnswer(buttonClicked) {
-    console.log("click reached index");
-    console.log("Right ANSWER: " + this.state.rightAnswerKey);
+  incrementGameProcess() {
+    this.setState((state) => ({gameProcess: state.gameProcess + 1}));
+  }
 
+  checkAnswer(buttonClicked) {
     if (importantLangKeyTable[buttonClicked] === this.state.rightAnswerKey) {
-      this.setState({AnswerMessage: "You are absolutely RIGHT >:))), kudos to you my friend"}, () => {
-        console.log("inside checkAnswer : rightanswerGiven: " + this.state.rightAnswerGiven);
-      });
       if (this.state.gameProcess === 1) {
-        this.setState((state) => ({gameProcess: state.gameProcess + 1}));        
+        this.incrementGameProcess()    
       } 
       this.setState({userAnsweredRight: true});
     }
     else {
-      this.setState({AnswerMessage: ("NO IT's " + this.state.rightAnswerKey + " you dumbass :D:D:D:")}, () => {
-        console.log("inside checkAnswer: wronganswerGiven: " + this.state.wrongAnswerGiven);
-      });
       if (this.state.gameProcess === 1) {
-        this.setState((state) => ({gameProcess: state.gameProcess + 1}));        
+        this.incrementGameProcess()       
       }
     }
   }
@@ -73,36 +70,46 @@ class App extends Component {
       })
     });
     if (this.state.gameProcess === 0) {
-      this.setState((state) => ({gameProcess: state.gameProcess + 1}));        
+      this.incrementGameProcess()        
     }
   }
 
+  rightAnswer() {
+    console.log("inside RightAnswer")
+    var rightAnswerIndex = 0;
+    for (var i = 0; i > importantLangKeyTable.length; i++) {
+      if (this.state.rightAnswerKey === importantLangKeyTable[i]) rightAnswerIndex = i;
+    }
+    return importantLangTable[rightAnswerIndex];
+  }
+
   render() {
-    const numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
     return ( 
       <div>
-        <Inputfield 
-          onSubmit={this.translateText} 
-        />
-        <TranslatedString 
-         printableTranslation={this.state.resultText}
-        />
-        {this.state.gameProcess === 1 && (
-          <AnswerButtonList
-            numbers={numbers}
-            label={importantLangTable} 
-            checkAnswer={this.checkAnswer}
+          <Inputfield 
+            onSubmit={this.translateText} 
           />
-        )} 
-        <ConclusionMessage 
-         label={this.state.AnswerMessage}
-        />
 
-        <PlayerRender 
-          gameProcess={this.state.gameProcess}
-          userAnsweredRight={this.state.userAnsweredRight}
-        />
+        {this.state.gameProcess === 1 && (
+          <div>
+            <TranslatedString 
+            printableTranslation={this.state.resultText}
+            />
+            <AnswerButtonList
+              numbers={numbers}
+              label={importantLangTable} 
+              checkAnswer={this.checkAnswer}
+            />
+          </div>
+        )}
+
+        {this.state.gameProcess === 2 && (
+          <ConclusionMessage 
+          answer={this.state.userAnsweredRight}
+          rightAnswerLang={this.rightAnswer}
+          />
+        )}
       </div>
     );
   }
