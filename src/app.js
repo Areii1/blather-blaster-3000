@@ -26,6 +26,16 @@ const importantTable = {
   af : 'Afrikaans'
 }
 
+const importantAnotherTable = {
+  ja : {name: 'Japanese', speaker: 'Japanese Female'},
+  sv : {name: 'Swedish', speaker: 'Swedish Female'},
+  fi : {name: 'Finland', speaker: 'Finnish Female'},
+  zh : {name: 'Chinese', speaker: 'Chinese Female'},
+  el : {name: 'Greek', speaker: 'Greek Female'},
+  ru : {name: 'Russian', speaker: 'Russian Female'},
+  af : {name: 'Afrikaans', speaker: 'Afrikaans Male'}
+}
+
 const responsiveVoiceTable = ['Japanese Female', 'Japanese Female',
  'Swedish Female', 'Finnish Female', 'US English Male', 'Finnish Female',
 'Chinese Female', 'Greek Female', 'Russian Female', 'Russian Female', 'Afrikaans Male'];
@@ -36,6 +46,10 @@ const importantLangKeyTable = ['ja', 'eo', 'sv', 'et', 'la',
 const numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
 const yandexInstance = YandexTranslate(YandexApiKey);
+
+function randomFromArray(array) {
+  return array[Math.floor(Math.random() * array.length)];
+}
 
 class App extends Component {
   constructor(props) {
@@ -69,17 +83,17 @@ class App extends Component {
     if (this.state.gameProcess === 0) {
       this.setState({gameProcess: 1});
 
-      const randNum = (Math.floor(Math.random() * 10) + 1);
-      const randLangKey = importantLangKeyTable[randNum];
+      const keytable = Object.keys(importantAnotherTable);
+      const randKey = randomFromArray(keytable);
+      const randSpeaker = importantAnotherTable[randKey].speaker;
 
-      const respTalker = responsiveVoiceTable[randNum];
-
-      yandexInstance.translate(submittedText, { to: randLangKey }, (err, res) => {
+      yandexInstance.translate(submittedText, { to: randKey }, (err, res) => {
         this.setState({
-          resultText: res.text,
-          rightAnswerKey: randLangKey,
+          resultText: res.text[0],
+          rightAnswerKey: randKey,
         })
-        responsiveVoice.speak(res.text[0], respTalker);
+        console.log("res text", res.text);
+        responsiveVoice.speak(res.text[0], randSpeaker);
       });
     }
   }
