@@ -86,6 +86,7 @@ class App extends Component {
       <div>
           <Inputfield 
             onSubmit={this.translateText} 
+            gameProcess={this.state.gameProcess}
           />
 
         {this.state.gameProcess === 1 && (
