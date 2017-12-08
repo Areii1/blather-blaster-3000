@@ -66,12 +66,12 @@ class App extends Component {
 
   translateText(submittedText) {
     const randLangKey = this.getRandomLang();
-      yandexInstance.translate(submittedText, { to: randLangKey }, (err, res) => {
-        this.setState({
-          resultText: res.text,
-          rightAnswerKey: randLangKey
-        })
-      });
+    yandexInstance.translate(submittedText, { to: randLangKey }, (err, res) => {
+      this.setState({
+        resultText: res.text,
+        rightAnswerKey: randLangKey
+      })
+    });
     if (this.state.gameProcess === 0) {
       this.setState((state) => ({gameProcess: state.gameProcess + 1}));        
     }
@@ -79,6 +79,7 @@ class App extends Component {
 
   render() {
     const numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
     return ( 
       <div>
         <Inputfield 
@@ -87,11 +88,13 @@ class App extends Component {
         <TranslatedString 
          printableTranslation={this.state.resultText}
         />
-        <AnswerButtonList
-          numbers={numbers}
-          label={importantLangTable} 
-          checkAnswer={this.checkAnswer}
-        />
+        {this.state.gameProcess === 1 && (
+          <AnswerButtonList
+            numbers={numbers}
+            label={importantLangTable} 
+            checkAnswer={this.checkAnswer}
+          />
+        )} 
         <ConclusionMessage 
          label={this.state.AnswerMessage}
         />
