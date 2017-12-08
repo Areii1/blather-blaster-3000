@@ -4,7 +4,6 @@ import YandexTranslate from 'yandex-translate';
 import Inputfield from './components/inputField';
 import AnswerButtonList from './components/answerButtonList';
 import ConclusionMessage from './components/conclusionMessage';
-import TranslatedString from './components/translatedString';
 import responsiveVoice from './responsivevoice';
 
 import YandexApiKey from './yandex-api-key';
@@ -101,9 +100,6 @@ class App extends Component {
 
         {this.state.gameProcess === 1 && (
           <div>
-            <TranslatedString 
-            printableTranslation={this.state.resultText}
-            />
             <AnswerButtonList
               numbers={numbers}
               label={importantLangTable} 
