@@ -5,6 +5,7 @@ import Inputfield from './components/inputField';
 import AnswerButtonList from './components/answerButtonList';
 import ConclusionMessage from './components/conclusionMessage';
 import TranslatedString from './components/translatedString';
+import responsiveVoice from './responsivevoice';
 
 import YandexApiKey from './yandex-api-key';
 
@@ -48,6 +49,9 @@ class App extends Component {
       if (importantLangKeyTable[clickedButtonIndex] === this.state.rightAnswerKey) {
         this.setState({userAnsweredRight: true});
       }
+      else {
+        this.setState({userAnsweredRight: false});
+      }
     }
   }
 
@@ -62,6 +66,7 @@ class App extends Component {
           rightAnswerKey: randLangKey
         })
       });
+      responsiveVoice.speak(submittedText);
     }
   }
 

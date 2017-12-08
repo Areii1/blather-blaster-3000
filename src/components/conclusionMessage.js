@@ -7,7 +7,6 @@ class ConclusionMessage extends Component {
     this.handleClick = this.handleClick.bind(this);
   }
 
-
   handleClick() {
     this.props.resetGame();
   }
