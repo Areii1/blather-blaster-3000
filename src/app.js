@@ -14,6 +14,10 @@ const importantLangTable = ['Japanese', 'Esperanto', 'Swedish',
  'Russian', 'German', 'Afrikaans'
 ];
 
+const responsiveVoiceTable = ['Japanese Female', 'Japanese Female',
+ 'Swedish Female', 'Finnish Female', 'US English Male', 'Finnish Female',
+'Chinese Female', 'Greek Female', 'Russian Female', 'Russian Female', 'Afrikaans Male'];
+
 const importantLangKeyTable = ['ja', 'eo', 'sv', 'et', 'la',
 'fi', 'zh', 'el', 'ru', 'de', 'af'];
 
@@ -38,11 +42,6 @@ class App extends Component {
     this.resetGame = this.resetGame.bind(this);
   }
 
-  getRandomLang() {
-    const randNum = (Math.floor(Math.random() * 10) + 1);
-    return importantLangKeyTable[randNum];
-  }
-
   checkAnswer(clickedButtonIndex) {
     if (this.state.gameProcess === 1) {
       this.setState({gameProcess: 2})
@@ -58,15 +57,21 @@ class App extends Component {
   translateText(submittedText) {
     if (this.state.gameProcess === 0) {
       this.setState({gameProcess: 1});
-      const randLangKey = this.getRandomLang();
+
+      const randNum = (Math.floor(Math.random() * 10) + 1);
+      const randLangKey = importantLangKeyTable[randNum];
+
+      const respTalker = responsiveVoiceTable[randNum];
 
       yandexInstance.translate(submittedText, { to: randLangKey }, (err, res) => {
+        console.log(res.text[0]);
+        console.log("hallo");
         this.setState({
           resultText: res.text,
-          rightAnswerKey: randLangKey
+          rightAnswerKey: randLangKey,
         })
+        responsiveVoice.speak(res.text[0], respTalker);
       });
-      responsiveVoice.speak(submittedText);
     }
   }
 
