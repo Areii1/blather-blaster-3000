@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import YandexTranslate from 'yandex-translate';
+import responsiveVoice from './responsivevoice';
 
 import Inputfield from './components/inputField';
 import AnswerButtonList from './components/answerButtonList';
 import ConclusionMessage from './components/conclusionMessage';
-import responsiveVoice from './responsivevoice';
 
 import YandexApiKey from './yandex-api-key';
 
@@ -12,6 +12,19 @@ const importantLangTable = ['Japanese', 'Esperanto', 'Swedish',
 'Estonian', 'Latin', 'Finnish', 'Chinese', 'Greek',
  'Russian', 'German', 'Afrikaans'
 ];
+
+const importantTable = {
+  ja : 'Japanese',
+  eo : 'Esperanto',
+  sv : 'Swedish',
+  la : 'Latin',
+  fi : 'Finland',
+  zh : 'Chinese',
+  el : 'Greek',
+  ru : 'Russian',
+  de : 'German',
+  af : 'Afrikaans'
+}
 
 const responsiveVoiceTable = ['Japanese Female', 'Japanese Female',
  'Swedish Female', 'Finnish Female', 'US English Male', 'Finnish Female',
@@ -37,7 +50,6 @@ class App extends Component {
 
     this.translateText = this.translateText.bind(this);
     this.checkAnswer = this.checkAnswer.bind(this);
-    this.rightAnswer = this.rightAnswer.bind(this);
     this.resetGame = this.resetGame.bind(this);
   }
 
@@ -63,8 +75,6 @@ class App extends Component {
       const respTalker = responsiveVoiceTable[randNum];
 
       yandexInstance.translate(submittedText, { to: randLangKey }, (err, res) => {
-        console.log(res.text[0]);
-        console.log("hallo");
         this.setState({
           resultText: res.text,
           rightAnswerKey: randLangKey,
@@ -72,16 +82,6 @@ class App extends Component {
         responsiveVoice.speak(res.text[0], respTalker);
       });
     }
-  }
-
-  rightAnswer() {
-    var rightAnswerIndex = 0;
-    for (var i = 0; i > importantLangKeyTable.length; i++) {
-      if (this.state.rightAnswerKey === importantLangKeyTable[i]) {
-        rightAnswerIndex = i;
-      }
-    }
-    return importantLangTable[rightAnswerIndex];
   }
 
   resetGame() {
@@ -111,7 +111,6 @@ class App extends Component {
         {this.state.gameProcess === 2 && (
           <ConclusionMessage 
           answer={this.state.userAnsweredRight}
-          rightAnswerLang={this.rightAnswer}
           resetGame={this.resetGame}
           />
         )}

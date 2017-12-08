@@ -12,7 +12,7 @@ class Inputfield extends Component {
   }
 
   handleFieldValueChange(event) {
-    if (this.props.gameProcess == 0) {
+    if (this.props.gameProcess === 0) {
       this.setState({textFieldValue: event.target.value});
       if (event.key === 'Enter') {
         this.props.onSubmit(this.state.textFieldValue);

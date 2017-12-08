@@ -5,6 +5,8 @@
 
  License: http://responsivevoice.org/license
 */
+
+/* eslint-disable */
 if("undefined"!=typeof responsiveVoice)console.log("ResponsiveVoice already loaded"),console.log(responsiveVoice);else var ResponsiveVoice=function(){var a=this;a.version="1.5.6";console.log("ResponsiveVoice r"+a.version);a.responsivevoices=[{name:"UK English Female",flag:"gb",gender:"f",voiceIDs:[3,5,1,6,7,171,278,201,257,286,342,258,287,343,8]},{name:"UK English Male",flag:"gb",gender:"m",voiceIDs:[0,4,2,75,277,202,256,285,341,159,6,7]},{name:"US English Female",flag:"us",gender:"f",voiceIDs:[39,
 40,41,42,43,173,205,204,235,283,339,44]},{name:"Arabic Male",flag:"ar",gender:"m",voiceIDs:[96,95,97,196,98],deprecated:!0},{name:"Arabic Female",flag:"ar",gender:"f",voiceIDs:[96,95,97,196,98]},{name:"Armenian Male",flag:"hy",gender:"f",voiceIDs:[99]},{name:"Australian Female",flag:"au",gender:"f",voiceIDs:[87,86,5,276,201,88]},{name:"Brazilian Portuguese Female",flag:"br",gender:"f",voiceIDs:[245,124,123,125,186,223,126]},{name:"Chinese Female",flag:"cn",gender:"f",voiceIDs:[249,58,59,60,155,191,
 281,231,268,297,353,269,298,354,61]},{name:"Chinese (Hong Kong) Female",flag:"hk",gender:"f",voiceIDs:[192,193,232,250,251,270,299,355,252]},{name:"Chinese Taiwan Female",flag:"tw",gender:"f",voiceIDs:[194,233,253,254,305,322,361,319,336,375,255]},{name:"Czech Female",flag:"cz",gender:"f",voiceIDs:[101,100,102,197,103]},{name:"Danish Female",flag:"dk",gender:"f",voiceIDs:[105,104,106,198,107]},{name:"Deutsch Female",flag:"de",gender:"f",voiceIDs:[27,28,29,30,31,78,170,275,199,261,290,346,262,291,
