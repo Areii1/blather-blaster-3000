@@ -3,8 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "mpg321": "^0.1.5",
+    "node-red-contrib-voicerss-tts": "0.0.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
+    "react-player": "^0.25.3",
     "react-scripts": "1.0.17",
     "react-sound": "^0.10.0",
     "yandex-translate": "^2.1.1"
