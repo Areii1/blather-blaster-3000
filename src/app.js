@@ -93,13 +93,13 @@ class App extends Component {
     if (importantLangKeyTable[buttonClicked] === this.state.rightAnswerKey) {
       this.setState({AnswerMessage: "You are absolutely RIGHT >:))), kudos to you my friend"}, () => {
         console.log("inside checkAnswer : rightanswerGiven: " + this.state.rightAnswerGiven);
-        this.setState({gameprocess: 2});
+        this.setState((state) => ({gameProcess: state.gameProcess + 1}));
       });
     }
     else {
       this.setState({AnswerMessage: ("NO IT's " + this.state.rightAnswerKey + " you dumbass :D:D:D:")}, () => {
         console.log("inside checkAnswer: wronganswerGiven: " + this.state.wrongAnswerGiven);
-        this.setState({gameprocess: 2});
+        this.setState((state) => ({gameProcess: state.gameProcess + 1}));
       });
     }
   }
@@ -111,7 +111,7 @@ class App extends Component {
       yandexInstance.translate(this.state.textFieldValueSubmitted, { to: randLangKey }, (err, res) => {
         this.setState({resultText: res.text});
         this.setState({rightAnswerKey: randLangKey});
-        this.setState({gameProcess: 1});
+        this.setState((state) => ({gameProcess: state.gameProcess + 1}));
       });
     });
   }
@@ -119,22 +119,17 @@ class App extends Component {
   playerRender() {
     console.log("player render: GamePROCESS: " + this.state.gameProcess);
     if (this.state.gameProcess == 2) {
-      return <ReactPlayer url='https://www.youtube.com/watch?v=4uEnNSclcqIh' playing={true} />;
+      this.setState({player: (<ReactPlayer url='https://www.youtube.com/watch?v=4uEnNSclcqIh' playing={true} />)});
     }
     else return null;
   }
-      
+  
   render() {
-    if (this.state.gameProcess === 1) {
-      this.state.player = <ReactPlayer url='https://www.youtube.com/watch?v=4uEnNSclcqIh' playing={true} />;
-      console.log("react player inside RENDER: " + this.state.player);      
-    }
-    else
-    console.log("react player inside RENDER: " + this.state.player);
-
+    console.log(this.state.gameProcess + ": gameProcess");
     const numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
     return ( 
       <div>
+        <audio src="./hurroo.mp3">trying to render audio</audio>
         <Inputfield 
           transable={this.translateText} 
         />
@@ -147,7 +142,7 @@ class App extends Component {
           checkAnswer={this.checkAnswer}
         />
         <ConclusionMessage 
-         label={this.state.AnswerMessage} 
+         label={this.state.AnswerMessage}
         />
       </div>
     );
