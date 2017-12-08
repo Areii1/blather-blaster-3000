@@ -34,7 +34,7 @@ class App extends Component {
     this.translateText = this.translateText.bind(this);
     this.checkAnswer = this.checkAnswer.bind(this);
     this.rightAnswer = this.rightAnswer.bind(this);
-    this.incrementGameProcess = this.incrementGameProcess.bind(this);
+    this.resetGame = this.resetGame.bind(this);
   }
 
   getRandomLang() {
@@ -42,41 +42,41 @@ class App extends Component {
     return importantLangKeyTable[randNum];
   }
 
-  incrementGameProcess() {
-    if (this.state.gameProcess === 2) this.setState({gameProcess: 0});
-    else this.setState((state) => ({gameProcess: state.gameProcess + 1}));
-    console.log("after incrementGameProcess : " + this.state.gameProcess);
-  }
-
   checkAnswer(clickedButtonIndex) {
     if (this.state.gameProcess === 1) {
-      if (importantLangKeyTable[clickedButtonIndex] === this.state.rightAnswerKey)
-      this.setState({userAnsweredRight: true});
-      /* */
-      this.incrementGameProcess();
+      this.setState({gameProcess: 2})
+      if (importantLangKeyTable[clickedButtonIndex] === this.state.rightAnswerKey) {
+        this.setState({userAnsweredRight: true});
+      }
     }
   }
 
   translateText(submittedText) {
     if (this.state.gameProcess === 0) {
+      this.setState({gameProcess: 1});
       const randLangKey = this.getRandomLang();
+
       yandexInstance.translate(submittedText, { to: randLangKey }, (err, res) => {
         this.setState({
           resultText: res.text,
           rightAnswerKey: randLangKey
         })
       });
-      this.incrementGameProcess();      
     }
-    else this.incrementGameProcess();
   }
 
   rightAnswer() {
     var rightAnswerIndex = 0;
     for (var i = 0; i > importantLangKeyTable.length; i++) {
-      if (this.state.rightAnswerKey === importantLangKeyTable[i]) rightAnswerIndex = i;
+      if (this.state.rightAnswerKey === importantLangKeyTable[i]) {
+        rightAnswerIndex = i;
+      }
     }
     return importantLangTable[rightAnswerIndex];
+  }
+
+  resetGame() {
+    this.setState({gameProcess: 0});
   }
 
   render() {
@@ -105,6 +105,7 @@ class App extends Component {
           <ConclusionMessage 
           answer={this.state.userAnsweredRight}
           rightAnswerLang={this.rightAnswer}
+          resetGame={this.resetGame}
           />
         )}
       </div>

@@ -4,10 +4,6 @@ class AnswerButton extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      buttonClicked: true
-    }
-
     this.handleClick = this.handleClick.bind(this);
   }
 
