@@ -29,7 +29,6 @@ class App extends Component {
     
     this.state = {
       gameProcess: 0,
-      resultText: "",
       rightAnswerName: "",
       userAnsweredRight: false,
       languageOptionsKeyTable: [],
@@ -64,7 +63,6 @@ class App extends Component {
 
       yandexInstance.translate(submittedText, { to: rightLanguage }, (err, res) => {
         this.setState({
-          resultText: res.text[0],
           rightAnswerName: languageInformation[rightLanguage].name,
           showSpinner: false,
           languageOptionsKeyTable: fiveRandomLanguages
