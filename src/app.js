@@ -8,7 +8,7 @@ import ConclusionMessage from './components/conclusionMessage';
 
 import YandexApiKey from './yandex-api-key';
 
-const importantAnotherTable = {
+const languageInformation = {
   ja : {name: 'Japanese', speaker: 'Japanese Female'},
   sv : {name: 'Swedish', speaker: 'Swedish Female'},
   fi : {name: 'Finland', speaker: 'Finnish Female'},
@@ -56,14 +56,14 @@ class App extends Component {
     if (this.state.gameProcess === 0) {
       this.setState({gameProcess: 1});
 
-      const keytable = Object.keys(importantAnotherTable);
+      const keytable = Object.keys(languageInformation);
       const randKey = randomFromArray(keytable);
-      const randSpeaker = importantAnotherTable[randKey].speaker;
+      const randSpeaker = languageInformation[randKey].speaker;
 
       yandexInstance.translate(submittedText, { to: randKey }, (err, res) => {
         this.setState({
           resultText: res.text[0],
-          rightAnswerName: importantAnotherTable[randKey].name,
+          rightAnswerName: languageInformation[randKey].name,
         })
         console.log("res text", res.text);
         responsiveVoice.speak(res.text[0], randSpeaker);
@@ -88,7 +88,7 @@ class App extends Component {
         {this.state.gameProcess === 1 && (
           <div>
             <AnswerButtonList 
-              importantAnotherTable={importantAnotherTable}
+              languageInformation={languageInformation}
               checkAnswer={this.checkAnswer}
             />
           </div>
