@@ -78,14 +78,15 @@ class App extends Component {
   
 
   resetGame() {
-    this.setState({gameProcess: 0});
+    this.setState({
+      gameProcess: 0,
+      rightAnswerName: '',
+      userAnsweredRight: false,
+      languageOptionsKeyTable: [],
+    });
   }
 
   render() {
-    console.log("gameProcess inside render : " + this.state.gameProcess);
-    console.log("fiveRandomLanguage : ", this.state.languageOptionsKeyTable);
-    console.log("Loading? : ", this.state.showSpinner);
-
     return ( 
       <div>
           <Inputfield 
