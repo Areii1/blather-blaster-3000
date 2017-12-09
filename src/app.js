@@ -32,7 +32,8 @@ class App extends Component {
       resultText: "",
       rightAnswerName: "",
       userAnsweredRight: false,
-      languageOptionsKeyTable: [] 
+      languageOptionsKeyTable: [],
+      showSpinner: false
     }
 
     this.translateText = this.translateText.bind(this);
@@ -49,7 +50,10 @@ class App extends Component {
 
   translateText(submittedText) {
     if (this.state.gameProcess === 0) {
-      this.setState({gameProcess: 1});
+      this.setState({
+        gameProcess: 1,
+        showSpinner: true
+      });
 
       const langugageKeys = Object.keys(languageInformation);
       const shuffledLanguages = shuffle(langugageKeys);
@@ -62,13 +66,13 @@ class App extends Component {
         this.setState({
           resultText: res.text[0],
           rightAnswerName: languageInformation[rightLanguage].name,
+          showSpinner: false,
+          languageOptionsKeyTable: fiveRandomLanguages
         })
         console.log("res text", res.text);
         console.log("rightLanguage: ", rightLanguage);
         responsiveVoice.speak(res.text[0], randSpeaker);
       });
-
-      this.setState({languageOptionsKeyTable: fiveRandomLanguages});
     }
   }
   
@@ -79,6 +83,8 @@ class App extends Component {
 
   render() {
     console.log("gameProcess inside render : " + this.state.gameProcess);
+    console.log("fiveRandomLanguage : ", this.state.languageOptionsKeyTable);
+    console.log("Loading? : ", this.state.showSpinner);
 
     return ( 
       <div>
@@ -94,6 +100,7 @@ class App extends Component {
               rightAnswerName={this.rightAnswerName}
               languageInformation={languageInformation}
               checkAnswer={this.checkAnswer}
+              showSpinner={this.state.showSpinner}
             />
           </div>
         )}
