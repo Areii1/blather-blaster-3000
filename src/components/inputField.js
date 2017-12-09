@@ -9,30 +9,35 @@ class Inputfield extends Component {
     }
 
     this.handleFieldValueChange = this.handleFieldValueChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleFieldValueChange(event) {
     if (this.props.gameProcess === 0) {
       this.setState({textFieldValue: event.target.value});
-      if (event.key === 'Enter') {
-        this.props.onSubmit(this.state.textFieldValue);
-        this.setState({textFieldValue: ""});
-      }
     }
+  }
+
+  handleSubmit(event) {
+    event.preventDefault();    
+    this.props.onSubmit(this.state.textFieldValue);
+    this.setState({textFieldValue: ""});
   }
 
   render() {
     return (
-      <div>
-        <h3>Write something something funny</h3>
-        <input
-          type="text"
-          onChange={this.handleFieldValueChange}
-          onKeyPress={this.handleFieldValueChange}
-          placeholder="aaanything"
-          value={this.state.textFieldValue}
+      <form onSubmit={this.handleSubmit}>
+        <label>
+          Write something   :  
+          <input
+            type="text"
+            value={this.state.textFieldValue}            
+            onChange={this.handleFieldValueChange}
+            placeholder="aaanything"
           />
-      </div>
+        </label>
+        <input type="submit" value="Submit" />
+      </form>
     );
   }
 }
