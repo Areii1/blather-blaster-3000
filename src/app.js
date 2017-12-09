@@ -2,21 +2,12 @@ import React, { Component } from 'react';
 import YandexTranslate from 'yandex-translate';
 import responsiveVoice from './responsivevoice';
 
+import languageInformation from './langList';
 import Inputfield from './components/inputField';
 import AnswerButtonList from './components/answerButtonList';
 import ConclusionMessage from './components/conclusionMessage';
 
 import YandexApiKey from './yandex-api-key';
-
-const languageInformation = {
-  ja : {name: 'Japanese', speaker: 'Japanese Female'},
-  sv : {name: 'Swedish', speaker: 'Swedish Female'},
-  fi : {name: 'Finland', speaker: 'Finnish Female'},
-  zh : {name: 'Chinese', speaker: 'Chinese Female'},
-  el : {name: 'Greek', speaker: 'Greek Female'},
-  ru : {name: 'Russian', speaker: 'Russian Female'},
-  af : {name: 'Afrikaans', speaker: 'Afrikaans Male'}
-}
 
 const yandexInstance = YandexTranslate(YandexApiKey);
 
