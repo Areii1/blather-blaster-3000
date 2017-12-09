@@ -1,0 +1,14 @@
+.app {
+  background-color: rgb(46,18,105);
+  color: white;
+  padding: 5%;
+  max-width: 40%;
+  position: relative;
+
+  top: 25%;
+  left: 25%;
+}
+
+.main-header {
+  margin-top: 0;
+}

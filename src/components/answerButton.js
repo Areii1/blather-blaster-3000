@@ -1,8 +1,9 @@
 import React from 'react';
+import './answerButton.css';
 
 function AnswerButton(props) {
   return (
-    <button onClick={() => {
+    <button className="answerButton" onClick={() => {
       props.checkAnswer(props.label)
     }}>
     {props.label}

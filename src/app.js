@@ -6,6 +6,7 @@ import languageInformation from './langList';
 import Inputfield from './components/inputField';
 import AnswerButtonList from './components/answerButtonList';
 import ConclusionMessage from './components/conclusionMessage';
+import './app.css';
 
 import {randomFromArray, shuffle} from './utils';
 
@@ -80,8 +81,8 @@ class App extends Component {
 
   render() {
     return ( 
-      <div>
-        <h1>Guess the language</h1>
+      <div className="app">
+        <h1 className="main-header">Guess the language</h1>
         <p>Score: {this.state.score}</p>
         {this.state.gameProcess === 0 && (
           <Inputfield onSubmit={this.translateText} />
