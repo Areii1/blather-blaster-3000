@@ -12,60 +12,15 @@ import YandexApiKey from './yandex-api-key';
 const yandexInstance = YandexTranslate(YandexApiKey);
 
 function randomFromArray(array) {
-  var randKey = array[Math.floor(Math.random() * array.length)];
-
-  if (randKey) {
-    return randKey;
-  }
-  else {
-    while (!randKey) {
-      randKey = array[Math.floor(Math.random() * array.length)];
-    }
-    return randKey;
-  }
+  return array[Math.floor(Math.random() * array.length)];
 }
 
-function chooseXRandLanguageKeys(x, keyToAvoid) {
-  var randKeyTable = [];
-  for(var i = 0; i < x; i++) {
-    var possibleKey = randomFromArray(Object.keys(languageInformation));
-    if (possibleKey !== keyToAvoid) {
-      randKeyTable[i] = possibleKey;
-    }
+function shuffle(a) {
+  for (let i = a.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [a[i], a[j]] = [a[j], a[i]];
   }
-  return randKeyTable;
-}
-
-function eliminateAndReplaceLangKeyDublicates(keyArray) {
-  var dublicateKey = "";
-  var replacementKey = "";
-  for (var i = 0; i < keyArray.length; i++) {
-    for (var k = 0; i < keyArray.length; i++) {
-      if (i !== k && keyArray[i] === keyArray[k]) {
-        dublicateKey = keyArray[i];
-        replacementKey = chooseXRandLanguageKeys(1)[0];
-
-        while (dublicateKey === replacementKey) {
-          replacementKey = chooseXRandLanguageKeys(1)[0];
-        }
-
-        keyArray[i] = replacementKey;
-        console.log("key " + keyArray[i] + " was replaced with: " + replacementKey);
-      }
-    }
-  }
-  return keyArray;
-}
-
-function placeItemToRandomSpotOnArray(array, item) {
-  var randNum = Math.floor(Math.random() * array.length);
-  console.log("rand place for the item : ", randNum);
-
-  for (var i = randNum; i < array.length; i++) {
-    array[i + 1] = array[i];
-  }
-  array[randNum] = item;
-  return array;
+  return a;
 }
 
 class App extends Component {
@@ -101,36 +56,27 @@ class App extends Component {
     if (this.state.gameProcess === 0) {
       this.setState({gameProcess: 1});
 
-      const keytable = Object.keys(languageInformation);
-      const randKey = randomFromArray(keytable);
-      const randSpeaker = languageInformation[randKey].speaker;
+      const langugageKeys = Object.keys(languageInformation);
+      const shuffledLanguages = shuffle(langugageKeys);
+      const fiveRandomLanguages = shuffledLanguages.splice(0, 5);
+      const rightLanguage = randomFromArray(fiveRandomLanguages);
 
-      yandexInstance.translate(submittedText, { to: randKey }, (err, res) => {
+      const randSpeaker = languageInformation[rightLanguage].speaker;
+
+      yandexInstance.translate(submittedText, { to: rightLanguage }, (err, res) => {
         this.setState({
           resultText: res.text[0],
-          rightAnswerName: languageInformation[randKey].name,
+          rightAnswerName: languageInformation[rightLanguage].name,
         })
         console.log("res text", res.text);
-        console.log("randKey: ", randKey);
+        console.log("rightLanguage: ", rightLanguage);
         responsiveVoice.speak(res.text[0], randSpeaker);
       });
-      var anotherFourLanguageKeys = chooseXRandLanguageKeys(4, randKey);
-      var concatedTable = [];
-      for (var i = 0; i < 5; i++) {
-        if (i < 4) {
-          concatedTable[i] = anotherFourLanguageKeys[i];
-        }
-        else if (i === 4) {
-          concatedTable[i] = randKey;
-        }
-      }
-      console.log("concatedTable: ", concatedTable);
-      var finishedTable = eliminateAndReplaceLangKeyDublicates(concatedTable);
-      console.log("finishedTable: ", finishedTable);
-      this.setState({languageOptionsKeyTable: finishedTable});
-      console.log("languageOptionsKeyTable: ", this.state.languageOptionsKeyTable);
+
+      this.setState({languageOptionsKeyTable: fiveRandomLanguages});
     }
   }
+  
 
   resetGame() {
     this.setState({gameProcess: 0});
