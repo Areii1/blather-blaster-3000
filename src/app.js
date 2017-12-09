@@ -21,7 +21,7 @@ class App extends Component {
       gameProcess: 0,
       rightAnswerName: "",
       userAnsweredRight: false,
-      languageOptionsKeyTable: [],
+      randomLanguageOptions: [],
       showSpinner: false,
       score: 0
     }
@@ -42,29 +42,31 @@ class App extends Component {
   }
 
   translateText(submittedText) {
-    this.setState({
-      gameProcess: 1,
-      showSpinner: true
-    });
-
-    const langugageKeys = Object.keys(languageInformation);
-    const shuffledLanguages = shuffle(langugageKeys);
-    const fiveRandomLanguages = shuffledLanguages.splice(0, 5);
-    const rightLanguage = randomFromArray(fiveRandomLanguages);
-
-    const randSpeaker = languageInformation[rightLanguage].speaker;
-    console.log('key send to yandex: ', rightLanguage);
-    yandexInstance.translate(submittedText, { to: rightLanguage }, (err, res) => {
+    if (submittedText) {
       this.setState({
-        rightAnswerName: languageInformation[rightLanguage].name,
-        showSpinner: false,
-        languageOptionsKeyTable: fiveRandomLanguages
+        gameProcess: 1,
+        showSpinner: true
       });
-      console.log('yandexTranslate errror', err);
-      console.log('yandex response :', res);
 
-      responsiveVoice.speak(res.text[0], randSpeaker);
-    });
+      const langugageKeys = Object.keys(languageInformation);
+      const shuffledLanguages = shuffle(langugageKeys);
+      const fiveRandomLanguages = shuffledLanguages.splice(0, 5);
+      const rightLanguage = randomFromArray(fiveRandomLanguages);
+
+      const randSpeaker = languageInformation[rightLanguage].speaker;
+      console.log('key send to yandex: ', rightLanguage);
+      yandexInstance.translate(submittedText, { to: rightLanguage }, (err, res) => {
+        this.setState({
+          rightAnswerName: languageInformation[rightLanguage].name,
+          showSpinner: false,
+          randomLanguageOptions: fiveRandomLanguages
+        });
+        console.log('yandexTranslate errror', err);
+        console.log('yandex response :', res);
+
+        responsiveVoice.speak(res.text[0], randSpeaker);
+      });
+    }
   }
 
   resetGame() {
@@ -72,7 +74,7 @@ class App extends Component {
       gameProcess: 0,
       rightAnswerName: '',
       userAnsweredRight: false,
-      languageOptionsKeyTable: [],
+      randomLanguageOptions: [],
     });
   }
 
@@ -88,7 +90,7 @@ class App extends Component {
         {this.state.gameProcess === 1 && (
           <div>
             <AnswerButtonList
-              optionsList={this.state.languageOptionsKeyTable}
+              optionsList={this.state.randomLanguageOptions}
               rightAnswerName={this.rightAnswerName}
               languageInformation={languageInformation}
               checkAnswer={this.checkAnswer}
