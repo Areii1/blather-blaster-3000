@@ -15,14 +15,36 @@ function randomFromArray(array) {
   return array[Math.floor(Math.random() * array.length)];
 }
 
-function chooseXRandLanguageKeys(x) {
-  console.log("inside ChooseXrandLanguageKeys parameter x is : ", x);
+function chooseXRandLanguageKeys(x, keyToAvoid) {
   var randKeyTable = [];
   for(var i = 0; i < x; i++) {
-    randKeyTable[i] = randomFromArray(Object.keys(languageInformation));
+    var possibleKey = randomFromArray(Object.keys(languageInformation));
+    if (possibleKey !== keyToAvoid) {
+      randKeyTable[i] = possibleKey;
+    }
   }
-  console.log("ChooseXrandLanguageKeys randKeyTable after process is: ", randKeyTable);
   return randKeyTable;
+}
+
+function eliminateAndReplaceLangKeyDublicates(keyArray) {
+  var dublicateKey = "";
+  var replacementKey = "";
+  for (var i = 0; i < keyArray.length; i++) {
+    for (var k = 0; i < keyArray.length; i++) {
+      if (i !== k && keyArray[i] === keyArray[k]) {
+        dublicateKey = keyArray[i];
+        replacementKey = chooseXRandLanguageKeys(1)[0];
+
+        while (dublicateKey === replacementKey) {
+          replacementKey = chooseXRandLanguageKeys(1)[0];
+        }
+
+        keyArray[i] = replacementKey;
+        console.log("key " + keyArray[i] + " was replaced with: " + replacementKey);
+      }
+    }
+  }
+  return keyArray;
 }
 
 class App extends Component {
@@ -71,16 +93,18 @@ class App extends Component {
         console.log("randKey: ", randKey);
         responsiveVoice.speak(res.text[0], randSpeaker);
       });
-      var anotherFourLanguageKeys = chooseXRandLanguageKeys(4);
-      var finishedTable = [];
+      var anotherFourLanguageKeys = chooseXRandLanguageKeys(4, randKey);
+      var concatedTable = [];
       for (var i = 0; i < 5; i++) {
         if (i < 4) {
-          finishedTable[i] = anotherFourLanguageKeys[i];
+          concatedTable[i] = anotherFourLanguageKeys[i];
         }
         else if (i == 4) {
-          finishedTable[i] = randKey;
+          concatedTable[i] = randKey;
         }
       }
+      console.log("concatedTable: ", concatedTable);
+      var finishedTable = eliminateAndReplaceLangKeyDublicates(concatedTable);
       console.log("finishedTable: ", finishedTable);
       this.setState({languageOptionsKeyTable: finishedTable});
       console.log("languageOptionsKeyTable: ", this.state.languageOptionsKeyTable);

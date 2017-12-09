@@ -28,7 +28,6 @@ const languageInformation = {
   cs : {name: 'Czech', speaker: 'Czech Female'},
   da : {name: 'Danish', speaker: 'Danish Female'},
   eo : {name: 'Esperanto', speaker: 'Esperanto Male'},
-  ht : {name: 'Hatian', speaker: 'Hatian Creole Female'},
   if : {name: 'Icelandic', speaker: 'Icelandic Male'},
   id : {name: 'Indonesian', speaker: 'Indonesian Female'},
   la : {name: 'Latin', speaker: 'Latin Female'},
