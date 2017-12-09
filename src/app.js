@@ -98,6 +98,7 @@ class App extends Component {
           <ConclusionMessage 
           answer={this.state.userAnsweredRight}
           resetGame={this.resetGame}
+          rightAnswerName={this.state.rightAnswerName}
           />
         )}
       </div>

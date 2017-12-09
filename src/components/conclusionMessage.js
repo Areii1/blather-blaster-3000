@@ -18,7 +18,10 @@ class ConclusionMessage extends Component {
           <h3>You are correct</h3>
         )}
          {!this.props.answer && (
-          <h3>You are wrong</h3>
+          <div>
+            <h3>You are wrong</h3>
+            <p>she was talking {this.props.rightAnswerName} actually :) </p>
+          </div>
          )}
          <button onClick={this.handleClick}>Play again</button>
       </div>
