@@ -17,8 +17,8 @@ function randomFromArray(array) {
 
 function shuffle(a) {
   for (let i = a.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [a[i], a[j]] = [a[j], a[i]];
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
   }
   return a;
 }
@@ -68,14 +68,12 @@ class App extends Component {
           rightAnswerName: languageInformation[rightLanguage].name,
           showSpinner: false,
           languageOptionsKeyTable: fiveRandomLanguages
-        })
-        console.log("res text", res.text);
-        console.log("rightLanguage: ", rightLanguage);
+        });
+
         responsiveVoice.speak(res.text[0], randSpeaker);
       });
     }
   }
-  
 
   resetGame() {
     this.setState({
@@ -89,10 +87,10 @@ class App extends Component {
   render() {
     return ( 
       <div>
-          <Inputfield 
-            onSubmit={this.translateText} 
-            gameProcess={this.state.gameProcess}
-          />
+        <Inputfield 
+          onSubmit={this.translateText} 
+          gameProcess={this.state.gameProcess}
+        />
 
         {this.state.gameProcess === 1 && (
           <div>
@@ -108,9 +106,9 @@ class App extends Component {
 
         {this.state.gameProcess === 2 && (
           <ConclusionMessage 
-          answer={this.state.userAnsweredRight}
-          resetGame={this.resetGame}
-          rightAnswerName={this.state.rightAnswerName}
+            answer={this.state.userAnsweredRight}
+            resetGame={this.resetGame}
+            rightAnswerName={this.state.rightAnswerName}
           />
         )}
       </div>

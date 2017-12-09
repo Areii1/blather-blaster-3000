@@ -11,7 +11,7 @@ class Inputfield extends Component {
     this.handleFieldValueChange = this.handleFieldValueChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
-  
+
   handleFieldValueChange(event) {
     if (this.props.gameProcess === 0) {
       this.setState({textFieldValue: event.target.value});
@@ -28,7 +28,7 @@ class Inputfield extends Component {
     return (
       <form onSubmit={this.handleSubmit}>
         <label>
-          Write something   :  
+          Write something:  
           <input
             type="text"
             value={this.state.textFieldValue}            

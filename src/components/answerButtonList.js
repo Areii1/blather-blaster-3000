@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import AnswerButton from './answerButton';
 
 class AnswerButtonList extends Component {
-
   render() {
     const listItems = this.props.optionsList.map((key) =>
       <AnswerButton 
@@ -10,7 +9,7 @@ class AnswerButtonList extends Component {
         label={this.props.languageInformation[key].name}
         checkAnswer={this.props.checkAnswer}
       />
-    )
+    );
     return (
       <div>
         {this.props.showSpinner && (
