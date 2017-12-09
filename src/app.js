@@ -7,21 +7,11 @@ import Inputfield from './components/inputField';
 import AnswerButtonList from './components/answerButtonList';
 import ConclusionMessage from './components/conclusionMessage';
 
+import {randomFromArray, shuffle} from './utils';
+
 import YandexApiKey from './yandex-api-key';
 
 const yandexInstance = YandexTranslate(YandexApiKey);
-
-function randomFromArray(array) {
-  return array[Math.floor(Math.random() * array.length)];
-}
-
-function shuffle(a) {
-  for (let i = a.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [a[i], a[j]] = [a[j], a[i]];
-  }
-  return a;
-}
 
 class App extends Component {
   constructor(props) {
