@@ -22,7 +22,8 @@ class App extends Component {
       rightAnswerName: "",
       userAnsweredRight: false,
       languageOptionsKeyTable: [],
-      showSpinner: false
+      showSpinner: false,
+      score: 0
     }
 
     this.translateText = this.translateText.bind(this);
@@ -32,8 +33,10 @@ class App extends Component {
 
   checkAnswer(clickedLangName) {
     responsiveVoice.cancel();
+    const answerWasRight = clickedLangName === this.state.rightAnswerName;
     this.setState({
-      userAnsweredRight: clickedLangName === this.state.rightAnswerName,
+      userAnsweredRight: answerWasRight,
+      score: answerWasRight ? this.state.score + 1 : this.state.score - 1,
       gameProcess: 2
     })
   }
@@ -77,6 +80,7 @@ class App extends Component {
     return ( 
       <div>
         <h1>Guess the language</h1>
+        <p>Score: {this.state.score}</p>
         {this.state.gameProcess === 0 && (
           <Inputfield onSubmit={this.translateText} />
         )}

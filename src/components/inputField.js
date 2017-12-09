@@ -32,11 +32,11 @@ class Inputfield extends Component {
               type="text"
               value={this.state.textFieldValue}            
               onChange={this.handleFieldValueChange}
-              placeholder="aaanything"
+              placeholder="type here"
             />
           </div>
         </label>
-        <input type="submit" value="Submit" />
+        <input type="submit" value="Say this" />
       </form>
     );
   }
