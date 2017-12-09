@@ -57,6 +57,17 @@ function eliminateAndReplaceLangKeyDublicates(keyArray) {
   return keyArray;
 }
 
+function placeItemToRandomSpotOnArray(array, item) {
+  var randNum = Math.floor(Math.random() * array.length);
+  console.log("rand place for the item : ", randNum);
+
+  for (var i = randNum; i < array.length; i++) {
+    array[i + 1] = array[i];
+  }
+  array[randNum] = item;
+  return array;
+}
+
 class App extends Component {
   constructor(props) {
     super(props);

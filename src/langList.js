@@ -15,32 +15,32 @@ const languageInformation = {
   ko : {name: 'Korean', speaker: 'Korean Female'},
   zh : {name: 'Chinese', speaker: 'Chinese Female'},
   hi : {name: 'Hindi', speaker: 'Hindi Female'},
-  sr : {name: 'Serbian', speaker: 'Serbian Male'},
-  hr : {name: 'Croatian', speaker: 'Croatian Male'},
+ /* sr : {name: 'Serbian', speaker: 'Serbian Male'},  NOT WORKING PROPERLY */
+ /* hr : {name: 'Croatian', speaker: 'Croatian Male'}, NOT WORKING PROPERLY */
   bs : {name: 'Bosnian', speaker: 'Bosnian Male'},
   ro : {name: 'Romanian', speaker: 'Romanian Male'},
-  ca : {name: 'Catalan', speaker: 'Catalan Male'},
+ /* ca : {name: 'Catalan', speaker: 'Catalan Male'}, NOT WORKING PROPERLYY */
   fi : {name: 'Finnish', speaker: 'Finnish Female'},
-  af : {name: 'Afrikaans', speaker: 'Afrikaans Male'},
+ /* af : {name: 'Afrikaans', speaker: 'Afrikaans Male'}, NOT WORKING PROPERLY */
   sq : {name: 'Albanian', speaker: 'Albanian Male'},
   ar : {name: 'Arabic', speaker: 'Arabic Male'},
-  hy : {name: 'Armenian', speaker: 'Armenian Male'},
+  /* hy : {name: 'Armenian', speaker: 'Armenian Male'},  NOT WORKING PROPERLY */
   cs : {name: 'Czech', speaker: 'Czech Female'},
   da : {name: 'Danish', speaker: 'Danish Female'},
-  eo : {name: 'Esperanto', speaker: 'Esperanto Male'},
+ /* eo : {name: 'Esperanto', speaker: 'Esperanto Male'}, NOT WORKING PROPERLY */
   if : {name: 'Icelandic', speaker: 'Icelandic Male'},
   id : {name: 'Indonesian', speaker: 'Indonesian Female'},
   la : {name: 'Latin', speaker: 'Latin Female'},
-  lv : {name: 'Latvian', speaker: 'Latvian Male'},
-  mk : {name: 'Macedonian', speaker: 'Macedonian Male'},
+ /* lv : {name: 'Latvian', speaker: 'Latvian Male'},  NOT WORKING PROPERLY */
+  /* mk : {name: 'Macedonian', speaker: 'Macedonian Male'}, NOT WORKING PROPERLY */
   pl : {name: 'Polish', speaker: 'Polish Female'},
   pt : {name: 'Portuguese', speaker: 'Portuguese Female'},
   sk : {name: 'Slovak', speaker: 'Slovak Female'},
-  sw : {name: 'Swahili', speaker: 'Swahili Male'},
-  ta : {name: 'Tamil', speaker: 'Tamil Male'},
+ /* sw : {name: 'Swahili', speaker: 'Swahili Male'}, NOT WORKING PROPERLY */
+ /* ta : {name: 'Tamil', speaker: 'Tamil Male'}, NOT WORKING PROPERLY */
   th : {name: 'Thai', speaker: 'Thai Female'},
   vi : {name: 'Vietnamese', speaker: 'Vietnamese Male'},
-  cy : {name: 'Welsh', speaker: 'Welsh Male'},
+  /* cy : {name: 'Welsh', speaker: 'Welsh Male'}, NOT WORKING PROPERLY */
 }
 
 export default languageInformation;
