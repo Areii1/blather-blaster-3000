@@ -1,21 +1,27 @@
-import React from 'react';
+import React, { Component } from 'react';
 import AnswerButton from './answerButton';
 
-function AnswerButtonList(props) {
-  const keys = Object.keys(props.languageInformation);
-  const listItems = keys.map((key) =>
-    <AnswerButton 
-    key={key}
-    label={props.languageInformation[key].name}
-    checkAnswer={props.checkAnswer}
-    />
-  )
+class AnswerButtonList extends Component {
+  constructor(props) {
+    super(props);
+  }
 
-  return (
-    <div>
-      {listItems}
-    </div>
-  );
+
+  listItems = this.props.optionsList.map((key) =>
+      <AnswerButton 
+      key={key}
+      label={this.props.languageInformation[key].name}
+      checkAnswer={this.props.checkAnswer}
+      />
+    )
+  
+  render() {
+    return (
+      <div>
+        {this.listItems}
+      </div>
+    );
+  }
 }
 
 export default AnswerButtonList;

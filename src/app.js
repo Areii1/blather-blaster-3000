@@ -15,6 +15,16 @@ function randomFromArray(array) {
   return array[Math.floor(Math.random() * array.length)];
 }
 
+function chooseXRandLanguageKeys(x) {
+  console.log("inside ChooseXrandLanguageKeys parameter x is : ", x);
+  var randKeyTable = [];
+  for(var i = 0; i < x; i++) {
+    randKeyTable[i] = randomFromArray(Object.keys(languageInformation));
+  }
+  console.log("ChooseXrandLanguageKeys randKeyTable after process is: ", randKeyTable);
+  return randKeyTable;
+}
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -24,6 +34,7 @@ class App extends Component {
       resultText: "",
       rightAnswerName: "",
       userAnsweredRight: false,
+      languageOptionsKeyTable: [] 
     }
 
     this.translateText = this.translateText.bind(this);
@@ -57,8 +68,22 @@ class App extends Component {
           rightAnswerName: languageInformation[randKey].name,
         })
         console.log("res text", res.text);
+        console.log("randKey: ", randKey);
         responsiveVoice.speak(res.text[0], randSpeaker);
       });
+      var anotherFourLanguageKeys = chooseXRandLanguageKeys(4);
+      var finishedTable = [];
+      for (var i = 0; i < 5; i++) {
+        if (i < 4) {
+          finishedTable[i] = anotherFourLanguageKeys[i];
+        }
+        else if (i == 4) {
+          finishedTable[i] = randKey;
+        }
+      }
+      console.log("finishedTable: ", finishedTable);
+      this.setState({languageOptionsKeyTable: finishedTable});
+      console.log("languageOptionsKeyTable: ", this.state.languageOptionsKeyTable);
     }
   }
 
@@ -78,7 +103,9 @@ class App extends Component {
 
         {this.state.gameProcess === 1 && (
           <div>
-            <AnswerButtonList 
+            <AnswerButtonList
+              optionsList={this.state.languageOptionsKeyTable}
+              rightAnswerName={this.rightAnswerName}
               languageInformation={languageInformation}
               checkAnswer={this.checkAnswer}
             />
