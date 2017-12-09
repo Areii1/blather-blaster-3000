@@ -17,7 +17,7 @@ const languageInformation = {
   hi : {name: 'Hindi', speaker: 'Hindi Female'},
  /* sr : {name: 'Serbian', speaker: 'Serbian Male'},  NOT WORKING PROPERLY */
  /* hr : {name: 'Croatian', speaker: 'Croatian Male'}, NOT WORKING PROPERLY */
-  bs : {name: 'Bosnian', speaker: 'Bosnian Male'},
+/*  bs : {name: 'Bosnian', speaker: 'Bosnian Male'}, NOT WORKING properly */
   ro : {name: 'Romanian', speaker: 'Romanian Male'},
  /* ca : {name: 'Catalan', speaker: 'Catalan Male'}, NOT WORKING PROPERLYY */
   fi : {name: 'Finnish', speaker: 'Finnish Female'},

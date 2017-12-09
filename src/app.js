@@ -42,12 +42,17 @@ class App extends Component {
 
   checkAnswer(clickedLangName) {
     if (this.state.gameProcess === 1) {
-      this.setState({gameProcess: 2})
       if (clickedLangName === this.state.rightAnswerName) {
-        this.setState({userAnsweredRight: true});
+        this.setState({
+          userAnsweredRight: true,
+          gameProcess: 2
+        });
       }
       else {
-        this.setState({userAnsweredRight: false});
+        this.setState({
+          userAnsweredRight: false,
+          gameProcess: 2
+        });
       }
     }
   }
