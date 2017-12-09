@@ -41,20 +41,10 @@ class App extends Component {
   }
 
   checkAnswer(clickedLangName) {
-    if (this.state.gameProcess === 1) {
-      if (clickedLangName === this.state.rightAnswerName) {
-        this.setState({
-          userAnsweredRight: true,
-          gameProcess: 2
-        });
-      }
-      else {
-        this.setState({
-          userAnsweredRight: false,
-          gameProcess: 2
-        });
-      }
-    }
+    this.setState({
+      userAnsweredRight: clickedLangName === this.state.rightAnswerName,
+      gameProcess: 2
+    })
   }
 
   translateText(submittedText) {
