@@ -50,7 +50,7 @@ class App extends Component {
     const rightLanguage = randomFromArray(fiveRandomLanguages);
 
     const randSpeaker = languageInformation[rightLanguage].speaker;
-    console.log('language passed: ', languageInformation[rightLanguage].name);
+    console.log('key send to yandex: ', rightLanguage);
     yandexInstance.translate(submittedText, { to: rightLanguage }, (err, res) => {
       this.setState({
         rightAnswerName: languageInformation[rightLanguage].name,

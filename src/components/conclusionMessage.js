@@ -1,16 +1,6 @@
 import React, { Component } from 'react';
 
 class ConclusionMessage extends Component {
-  constructor(props) {
-    super(props);
-
-    this.handleClick = this.handleClick.bind(this);
-  }
-
-  handleClick() {
-    this.props.resetGame();
-  }
-
   render () {
     return (
       <div>
@@ -20,10 +10,10 @@ class ConclusionMessage extends Component {
         {!this.props.answer && (
         <div>
           <h3>You are wrong</h3>
-          <p>she was talking {this.props.rightAnswerName} actually :) </p>
+          <p>that was {this.props.rightAnswerName} actually :) </p>
         </div>
         )}
-        <button onClick={this.handleClick}>Play again</button>
+        <button onClick={this.props.resetGame}>Play again</button>
       </div>
     );
   }
