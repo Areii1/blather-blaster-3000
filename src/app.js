@@ -12,7 +12,17 @@ import YandexApiKey from './yandex-api-key';
 const yandexInstance = YandexTranslate(YandexApiKey);
 
 function randomFromArray(array) {
-  return array[Math.floor(Math.random() * array.length)];
+  var randKey = array[Math.floor(Math.random() * array.length)];
+
+  if (randKey) {
+    return randKey;
+  }
+  else {
+    while (!randKey) {
+      randKey = array[Math.floor(Math.random() * array.length)];
+    }
+    return randKey;
+  }
 }
 
 function chooseXRandLanguageKeys(x, keyToAvoid) {
@@ -99,7 +109,7 @@ class App extends Component {
         if (i < 4) {
           concatedTable[i] = anotherFourLanguageKeys[i];
         }
-        else if (i == 4) {
+        else if (i === 4) {
           concatedTable[i] = randKey;
         }
       }
