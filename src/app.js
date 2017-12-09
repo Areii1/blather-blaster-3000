@@ -31,6 +31,7 @@ class App extends Component {
   }
 
   checkAnswer(clickedLangName) {
+    responsiveVoice.cancel();
     this.setState({
       userAnsweredRight: clickedLangName === this.state.rightAnswerName,
       gameProcess: 2
@@ -38,30 +39,29 @@ class App extends Component {
   }
 
   translateText(submittedText) {
-    if (this.state.gameProcess === 0) {
+    this.setState({
+      gameProcess: 1,
+      showSpinner: true
+    });
+
+    const langugageKeys = Object.keys(languageInformation);
+    const shuffledLanguages = shuffle(langugageKeys);
+    const fiveRandomLanguages = shuffledLanguages.splice(0, 5);
+    const rightLanguage = randomFromArray(fiveRandomLanguages);
+
+    const randSpeaker = languageInformation[rightLanguage].speaker;
+    console.log('language passed: ', languageInformation[rightLanguage].name);
+    yandexInstance.translate(submittedText, { to: rightLanguage }, (err, res) => {
       this.setState({
-        gameProcess: 1,
-        showSpinner: true
+        rightAnswerName: languageInformation[rightLanguage].name,
+        showSpinner: false,
+        languageOptionsKeyTable: fiveRandomLanguages
       });
+      console.log('yandexTranslate errror', err);
+      console.log('yandex response :', res);
 
-      const langugageKeys = Object.keys(languageInformation);
-      const shuffledLanguages = shuffle(langugageKeys);
-      const fiveRandomLanguages = shuffledLanguages.splice(0, 5);
-      const rightLanguage = randomFromArray(fiveRandomLanguages);
-
-      const randSpeaker = languageInformation[rightLanguage].speaker;
-
-      yandexInstance.translate(submittedText, { to: rightLanguage }, (err, res) => {
-        this.setState({
-          rightAnswerName: languageInformation[rightLanguage].name,
-          showSpinner: false,
-          languageOptionsKeyTable: fiveRandomLanguages
-        });
-        console.log('yandexTranslate errror', err);
-
-        responsiveVoice.speak(res.text[0], randSpeaker);
-      });
-    }
+      responsiveVoice.speak(res.text[0], randSpeaker);
+    });
   }
 
   resetGame() {
