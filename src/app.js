@@ -76,6 +76,7 @@ class App extends Component {
   render() {
     return ( 
       <div>
+        <h1>Guess the language</h1>
         {this.state.gameProcess === 0 && (
           <Inputfield onSubmit={this.translateText} />
         )}

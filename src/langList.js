@@ -23,7 +23,6 @@ const languageInformation = {
   fi : {name: 'Finnish', speaker: 'Finnish Female'},
  /* af : {name: 'Afrikaans', speaker: 'Afrikaans Male'}, NOT WORKING PROPERLY */
  /* sq : {name: 'Albanian', speaker: 'Albanian Male'}, NOT WORKING PROPERLY */
-  ar : {name: 'Arabic', speaker: 'Arabic Male'},
   /* hy : {name: 'Armenian', speaker: 'Armenian Male'},  NOT WORKING PROPERLY */
   cs : {name: 'Czech', speaker: 'Czech Female'},
   da : {name: 'Danish', speaker: 'Danish Female'},

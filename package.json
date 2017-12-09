@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "node-red-contrib-voicerss-tts": "0.0.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-player": "^0.25.3",

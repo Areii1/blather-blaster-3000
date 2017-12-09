@@ -26,13 +26,15 @@ class Inputfield extends Component {
     return (
       <form onSubmit={this.handleSubmit}>
         <label>
-          Write something:  
-          <input
-            type="text"
-            value={this.state.textFieldValue}            
-            onChange={this.handleFieldValueChange}
-            placeholder="aaanything"
-          />
+          Write something and I will say it out loud in a random language 
+          <div>
+            <input
+              type="text"
+              value={this.state.textFieldValue}            
+              onChange={this.handleFieldValueChange}
+              placeholder="aaanything"
+            />
+          </div>
         </label>
         <input type="submit" value="Submit" />
       </form>
