@@ -8,7 +8,8 @@ class AnswerButton extends Component {
   }
 
   handleClick() {
-    this.props.checkAnswer(this.props.number);
+    console.log("clicked: ", this.props.label);
+    this.props.checkAnswer(this.props.label);
   }
   
   render () {

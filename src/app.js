@@ -8,24 +8,6 @@ import ConclusionMessage from './components/conclusionMessage';
 
 import YandexApiKey from './yandex-api-key';
 
-const importantLangTable = ['Japanese', 'Esperanto', 'Swedish',
-'Estonian', 'Latin', 'Finnish', 'Chinese', 'Greek',
- 'Russian', 'German', 'Afrikaans'
-];
-
-const importantTable = {
-  ja : 'Japanese',
-  eo : 'Esperanto',
-  sv : 'Swedish',
-  la : 'Latin',
-  fi : 'Finland',
-  zh : 'Chinese',
-  el : 'Greek',
-  ru : 'Russian',
-  de : 'German',
-  af : 'Afrikaans'
-}
-
 const importantAnotherTable = {
   ja : {name: 'Japanese', speaker: 'Japanese Female'},
   sv : {name: 'Swedish', speaker: 'Swedish Female'},
@@ -35,15 +17,6 @@ const importantAnotherTable = {
   ru : {name: 'Russian', speaker: 'Russian Female'},
   af : {name: 'Afrikaans', speaker: 'Afrikaans Male'}
 }
-
-const responsiveVoiceTable = ['Japanese Female', 'Japanese Female',
- 'Swedish Female', 'Finnish Female', 'US English Male', 'Finnish Female',
-'Chinese Female', 'Greek Female', 'Russian Female', 'Russian Female', 'Afrikaans Male'];
-
-const importantLangKeyTable = ['ja', 'eo', 'sv', 'et', 'la',
-'fi', 'zh', 'el', 'ru', 'de', 'af'];
-
-const numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
 const yandexInstance = YandexTranslate(YandexApiKey);
 
@@ -58,7 +31,7 @@ class App extends Component {
     this.state = {
       gameProcess: 0,
       resultText: "",
-      rightAnswerKey: "",
+      rightAnswerName: "",
       userAnsweredRight: false,
     }
 
@@ -67,10 +40,10 @@ class App extends Component {
     this.resetGame = this.resetGame.bind(this);
   }
 
-  checkAnswer(clickedButtonIndex) {
+  checkAnswer(clickedLangName) {
     if (this.state.gameProcess === 1) {
       this.setState({gameProcess: 2})
-      if (importantLangKeyTable[clickedButtonIndex] === this.state.rightAnswerKey) {
+      if (clickedLangName === this.state.rightAnswerName) {
         this.setState({userAnsweredRight: true});
       }
       else {
@@ -90,7 +63,7 @@ class App extends Component {
       yandexInstance.translate(submittedText, { to: randKey }, (err, res) => {
         this.setState({
           resultText: res.text[0],
-          rightAnswerKey: randKey,
+          rightAnswerName: importantAnotherTable[randKey].name,
         })
         console.log("res text", res.text);
         responsiveVoice.speak(res.text[0], randSpeaker);
@@ -114,9 +87,8 @@ class App extends Component {
 
         {this.state.gameProcess === 1 && (
           <div>
-            <AnswerButtonList
-              numbers={numbers}
-              label={importantLangTable} 
+            <AnswerButtonList 
+              importantAnotherTable={importantAnotherTable}
               checkAnswer={this.checkAnswer}
             />
           </div>
