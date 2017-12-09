@@ -5,7 +5,7 @@ class Inputfield extends Component {
     super(props);
 
     this.state = {
-      textFieldValue : "",
+      textFieldValue : '',
     }
 
     this.handleFieldValueChange = this.handleFieldValueChange.bind(this);
@@ -13,15 +13,13 @@ class Inputfield extends Component {
   }
 
   handleFieldValueChange(event) {
-    if (this.props.gameProcess === 0) {
-      this.setState({textFieldValue: event.target.value});
-    }
+    this.setState({textFieldValue: event.target.value});
   }
 
   handleSubmit(event) {
     event.preventDefault();    
     this.props.onSubmit(this.state.textFieldValue);
-    this.setState({textFieldValue: ""});
+    this.setState({textFieldValue: ''});
   }
 
   render() {

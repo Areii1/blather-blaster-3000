@@ -67,6 +67,7 @@ class App extends Component {
           showSpinner: false,
           languageOptionsKeyTable: fiveRandomLanguages
         });
+        console.log('yandexTranslate errror', err);
 
         responsiveVoice.speak(res.text[0], randSpeaker);
       });
@@ -85,10 +86,9 @@ class App extends Component {
   render() {
     return ( 
       <div>
-        <Inputfield 
-          onSubmit={this.translateText} 
-          gameProcess={this.state.gameProcess}
-        />
+        {this.state.gameProcess === 0 && (
+          <Inputfield onSubmit={this.translateText} />
+        )}
 
         {this.state.gameProcess === 1 && (
           <div>
