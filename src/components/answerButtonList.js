@@ -14,6 +14,9 @@ function AnswerButtonList(props) {
       {props.showSpinner && (
         <p>loading</p>
       )}
+      {!props.showSpinner && (
+        <p>What language did we just hear?</p>
+      )}
       {listItems}
     </div>
   );

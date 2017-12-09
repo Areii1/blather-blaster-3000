@@ -82,8 +82,7 @@ class App extends Component {
   render() {
     return ( 
       <div className="app">
-        <h1 className="main-header">Guess the language</h1>
-        <p>Score: {this.state.score}</p>
+        <h1 className="main-header">Blather Blaster 3000</h1>
         {this.state.gameProcess === 0 && (
           <Inputfield onSubmit={this.translateText} />
         )}
@@ -107,6 +106,7 @@ class App extends Component {
             rightAnswerName={this.state.rightAnswerName}
           />
         )}
+        <p>Score: {this.state.score}</p>
       </div>
     );
   }

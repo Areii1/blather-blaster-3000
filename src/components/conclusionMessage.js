@@ -9,7 +9,6 @@ function ConclusionMessage(props) {
       {!props.answer && (
       <div>
         <h3>You are wrong</h3>
-        <p>that was {props.rightAnswerName} actually :) </p>
       </div>
       )}
       <button onClick={props.resetGame}>Play again</button>

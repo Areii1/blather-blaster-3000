@@ -1,14 +1,20 @@
+body {
+  background-color: #4717a6;
+}
+
 .app {
-  background-color: rgb(46,18,105);
+  background-color:#141a4a;
   color: white;
   padding: 5%;
-  max-width: 40%;
+  max-width: 45%;
   position: relative;
-
   top: 25%;
-  left: 25%;
+  left: 20%;
+
+  text-align: center;
 }
 
 .main-header {
   margin-top: 0;
+  font-size: 1.7em;
 }

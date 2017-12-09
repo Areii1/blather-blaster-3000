@@ -26,7 +26,7 @@ class Inputfield extends Component {
     return (
       <form onSubmit={this.handleSubmit}>
         <label>
-          Write something and I will say it out loud in a random language 
+          Write me something and let the yackering ensue!
           <div>
             <input
               type="text"
