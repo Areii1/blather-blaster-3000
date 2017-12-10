@@ -1,8 +1,8 @@
 {
-  "name": "my-app",
+  "name": "blather-blaster-3000",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://areii1.github.io/gibberishGabbler",
+  "homepage": "http://areii1.github.io/my-app",
   "dependencies": {
     "gh-pages": "^1.1.0",
     "react": "^16.2.0",
