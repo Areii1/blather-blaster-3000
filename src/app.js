@@ -6,7 +6,7 @@ import YandexApiKey from './yandex-api-key';
 import languageInformation from './langList';
 import Inputfield from './components/inputField';
 import AnswerButtonList from './components/answerButtonList';
-import ConclusionMessage from './components/conclusionMessage';
+import {ConclusionMessage} from './components/conclusionMessage';
 
 import './app.css';
 import talkinghead from './media/bla_white.png';
@@ -25,7 +25,8 @@ class App extends Component {
       userAnsweredRight: false,
       randomLanguageOptions: [],
       showSpinner: false,
-      score: 0
+      score: 0,
+      mistakesInARow: 0
     }
 
     this.translateText = this.translateText.bind(this);
@@ -39,6 +40,7 @@ class App extends Component {
     this.setState({
       userAnsweredRight: answerWasRight,
       score: answerWasRight ? this.state.score + 1 : this.state.score - 1,
+      mistakesInARow: answerWasRight ? 0 : this.state.mistakesInARow + 1,
       gameProcess: 2
     })
   }
@@ -56,15 +58,13 @@ class App extends Component {
       const rightLanguage = randomFromArray(fiveRandomLanguages);
 
       const randSpeaker = languageInformation[rightLanguage].speaker;
-      console.log('key send to yandex: ', rightLanguage);
       yandexInstance.translate(submittedText, { to: rightLanguage }, (err, res) => {
         this.setState({
           rightAnswerName: languageInformation[rightLanguage].name,
           showSpinner: false,
           randomLanguageOptions: fiveRandomLanguages
         });
-        console.log('yandexTranslate errror', err);
-        console.log('yandex response :', res);
+        console.log('yandexTranslate error', err);
 
         responsiveVoice.speak(res.text[0], randSpeaker);
       });
@@ -106,6 +106,7 @@ class App extends Component {
             answer={this.state.userAnsweredRight}
             resetGame={this.resetGame}
             rightAnswerName={this.state.rightAnswerName}
+            mistakesInARow={this.state.mistakesInARow}
           />
         )}
         <p id="score">Score: {this.state.score}</p>
