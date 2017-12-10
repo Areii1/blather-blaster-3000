@@ -1,20 +1,27 @@
+@import url('https://fonts.googleapis.com/css?family=Nunito|PT+Sans');
+
+
 body {
   background-color: #4717a6;
+  font-family: 'Nunito', sans-serif;
 }
 
 .app {
   background-color:#141a4a;
   color: white;
-  padding: 5%;
+  padding: 0 5% 0 5%;
   max-width: 45%;
+  height: 350px;
   position: relative;
   top: 25%;
   left: 20%;
 
   text-align: center;
+
 }
 
 .main-header {
   margin-top: 0;
+  padding-top: 5%;
   font-size: 1.7em;
 }

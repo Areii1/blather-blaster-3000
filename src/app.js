@@ -106,7 +106,7 @@ class App extends Component {
             rightAnswerName={this.state.rightAnswerName}
           />
         )}
-        <p>Score: {this.state.score}</p>
+        <p id="score">Score: {this.state.score}</p>
       </div>
     );
   }

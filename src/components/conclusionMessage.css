@@ -1,4 +1,4 @@
-.answer-button {
+#play-again-button {
   background-color: #2840c1;
   width: 60%;
   color: white;
@@ -6,6 +6,11 @@
   padding: 3%;
 }
 
-.answer-button:hover {
+#play-again-button:hover {
   background-color: #8b99e0;
 }
+
+.msg {
+  font-size: 0.8em;
+}
+

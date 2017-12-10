@@ -1,6 +1,8 @@
 import React from 'react';
 import AnswerButton from './answerButton';
 
+import './answerButtonList.css';
+
 function AnswerButtonList(props) {
   const listItems = props.optionsList.map((key) =>
     <AnswerButton 
@@ -10,15 +12,15 @@ function AnswerButtonList(props) {
     />
   );
   return (
-    <div>
+    <ul>
       {props.showSpinner && (
-        <p>loading</p>
+        <p className="list-msg">loading</p>
       )}
       {!props.showSpinner && (
-        <p>What language did we just hear?</p>
+        <p className="list-msg">What language did we just hear?</p>
       )}
       {listItems}
-    </div>
+    </ul>
   );
 }
 

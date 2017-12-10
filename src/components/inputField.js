@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './inputField.css';
 
 class Inputfield extends Component {
   constructor(props) {
@@ -25,18 +26,17 @@ class Inputfield extends Component {
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
-        <label>
+        <p className="input-description">
           Write me something and let the yackering ensue!
-          <div>
-            <input
+        </p>
+            <input id="text-input"
               type="text"
               value={this.state.textFieldValue}            
               onChange={this.handleFieldValueChange}
               placeholder="type here"
             />
-          </div>
-        </label>
-        <input type="submit" value="Say this" />
+           <input id="submit-button" type="submit" value="Say this" />
+       
       </form>
     );
   }

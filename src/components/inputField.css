@@ -1,0 +1,20 @@
+.input-description {
+  font-size: 0.8em;
+}
+
+#text-input {
+  margin: 5% 0 5% -3%;
+  padding: 3%;
+  width: 70%;
+  display: block;
+  float: left;
+}
+
+#submit-button {
+  margin: 5% 0 5% 0;
+  background-color: #2840c1;
+  width: 20%;
+  color: white;
+  border: 1px solid black;
+  padding: 3% 0 3% 0;
+}
