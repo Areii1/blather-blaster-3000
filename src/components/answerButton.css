@@ -4,6 +4,8 @@
   color: white;
   border: 1px solid black;
   padding: 3%;
+  overflow: hidden;
+  opacity: 0.8;
 }
 
 .answer-button:hover {

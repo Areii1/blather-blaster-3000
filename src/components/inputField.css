@@ -1,5 +1,6 @@
-.input-description {
+#input-description {
   font-size: 0.8em;
+  color: #919fdd;
 }
 
 #text-input {
@@ -8,6 +9,7 @@
   width: 70%;
   display: block;
   float: left;
+  opacity: 0.8;
 }
 
 #submit-button {
@@ -17,4 +19,5 @@
   color: white;
   border: 1px solid black;
   padding: 3% 0 3% 0;
+  opacity: 0.8;
 }

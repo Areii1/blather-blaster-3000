@@ -26,7 +26,7 @@ class Inputfield extends Component {
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
-        <p className="input-description">
+        <p id="input-description">
           Write me something and let the yackering ensue!
         </p>
             <input id="text-input"

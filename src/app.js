@@ -1,16 +1,17 @@
 import React, { Component } from 'react';
 import YandexTranslate from 'yandex-translate';
 import responsiveVoice from './responsivevoice';
+import YandexApiKey from './yandex-api-key';
 
 import languageInformation from './langList';
 import Inputfield from './components/inputField';
 import AnswerButtonList from './components/answerButtonList';
 import ConclusionMessage from './components/conclusionMessage';
+
 import './app.css';
+import talkinghead from './media/bla_white.png';
 
 import {randomFromArray, shuffle} from './utils';
-
-import YandexApiKey from './yandex-api-key';
 
 const yandexInstance = YandexTranslate(YandexApiKey);
 
@@ -81,8 +82,9 @@ class App extends Component {
 
   render() {
     return ( 
-      <div className="app">
-        <h1 className="main-header">Blather Blaster 3000</h1>
+      <div id="app">
+        <h1 id="main-header">Blather Blaster 3000</h1>
+        <img src={talkinghead} id="talking-head" alt="talkinghead"/>
         {this.state.gameProcess === 0 && (
           <Inputfield onSubmit={this.translateText} />
         )}

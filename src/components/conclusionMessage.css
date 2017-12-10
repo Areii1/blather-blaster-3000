@@ -4,6 +4,7 @@
   color: white;
   border: 1px solid black;
   padding: 3%;
+  opacity: 0.8;
 }
 
 #play-again-button:hover {
@@ -12,5 +13,6 @@
 
 .msg {
   font-size: 0.8em;
+  color: #919fdd;
 }
 
