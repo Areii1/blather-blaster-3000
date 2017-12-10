@@ -4,20 +4,28 @@
 }
 
 #text-input {
-  margin: 5% 0 5% 3%;
   padding: 3%;
-  width: 70%;
   display: block;
   float: left;
-  opacity: 0.8;
+  width: 70%;
 }
 
 #submit-button {
-  margin: 5% 0 5% 0;
   background-color: #2840c1;
-  width: 15%;
   color: white;
   border: 1px solid black;
   padding: 3% 0 3% 0;
+  width: 20%;
+  font-weight: bold;
+}
+
+#submit-button:hover {
+  background-color: #8b99e0;
+}
+
+#text-and-submit {
   opacity: 0.8;
+  width: 100%;
+  border: 7px groove white;
+  border-radius: 5%;
 }

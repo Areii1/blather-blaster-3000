@@ -2,9 +2,10 @@
   background-color: #2840c1;
   width: 60%;
   color: white;
-  border: 1px solid black;
+  border: 1px solid #141a4a;
   padding: 3%;
   opacity: 0.8;
+  font-weight: bold;
 }
 
 #play-again-button:hover {

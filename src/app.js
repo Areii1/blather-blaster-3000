@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import YandexTranslate from 'yandex-translate';
 import responsiveVoice from './responsivevoice';
-import YandexApiKey from './yandex-api-key';
+import yandexApiKey from './yandex-api-key';
 
 import languageInformation from './langList';
 import Inputfield from './components/inputField';
@@ -13,7 +13,7 @@ import talkinghead from './media/bla_white.png';
 
 import {randomFromArray, shuffle} from './utils';
 
-const yandexInstance = YandexTranslate(YandexApiKey);
+const yandexInstance = YandexTranslate(yandexApiKey);
 
 class App extends Component {
   constructor(props) {

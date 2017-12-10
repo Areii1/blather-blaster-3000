@@ -1,8 +1,9 @@
 .answer-button {
+  font-weight: bold;
   background-color: #2840c1;
   width: 60%;
   color: white;
-  border: 1px solid black;
+  border: 1px solid #141a4a;
   padding: 3%;
   overflow: hidden;
   opacity: 0.8;

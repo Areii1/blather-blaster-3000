@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Nunito|PT+Sans');
 
-
 body {
   background: linear-gradient(to right top, #45007a, #4923bf );
   font-family: 'PT-Sans', sans-serif;
@@ -11,11 +10,9 @@ body {
   background: linear-gradient(to right top, #3d0e7b, #141a4a);
   color: white;
   padding: 0 5% 0 5%;
-  max-width: 45%;
-  height: 500px;
-  position: relative;
-  top: 25%;
-  left: 20%;
+  margin-left: 10%;
+  width: 70%;
+  height: 550px;
   text-align: center;
   border-radius: 5%;
   border: groove;
