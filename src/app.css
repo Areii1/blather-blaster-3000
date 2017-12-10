@@ -2,12 +2,14 @@
 
 
 body {
-  background-color: #4717a6;
-  font-family: 'Nunito', sans-serif;
+  background: linear-gradient(to right top, #45007a, #4923bf );
+  font-family: 'PT-Sans', sans-serif;
+  height: 1000px;
 }
 
 .app {
-  background-color:#141a4a;
+  background: linear-gradient(to right top, #3d0e7b, #141a4a);
+  
   color: white;
   padding: 0 5% 0 5%;
   max-width: 45%;

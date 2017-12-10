@@ -35,7 +35,7 @@ class Inputfield extends Component {
               onChange={this.handleFieldValueChange}
               placeholder="type here"
             />
-           <input id="submit-button" type="submit" value="Say this" />
+           <input id="submit-button" type="submit" value="Say it" />
        
       </form>
     );
