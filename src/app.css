@@ -1,22 +1,26 @@
 @import url('https://fonts.googleapis.com/css?family=Nunito|PT+Sans');
 
+* { 
+  box-sizing: border-box;
+}
+
 body {
   background: linear-gradient(to right top, #45007a, #4923bf );
   font-family: 'PT-Sans', sans-serif;
   height: 700px;
+  justify-content: center;
 }
 
 #app {
   background: linear-gradient(to right top, #3d0e7b, #141a4a);
   color: white;
   padding: 0 5% 0 5%;
-  margin-left: 10%;
-  width: 70%;
+  max-width: 500px;
   height: 550px;
   text-align: center;
   border-radius: 5%;
   border: groove;
-
+  display: inline-block;
 }
 
 #main-header {
@@ -30,6 +34,6 @@ body {
 }
 
 #talking-head {
-  width: 50px;
-  height: 50px;
+  width: 20%;
+  height: 10%;
 }
