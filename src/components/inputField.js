@@ -25,21 +25,23 @@ class Inputfield extends Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <p id="input-description">
-          Write me something and let the yackering ensue!
-        </p>
-          <div id="text-and-submit">
-            <input id="text-input"
-              type="text"
-              autoFocus
-              value={this.state.textFieldValue}            
-              onChange={this.handleFieldValueChange}
-              placeholder="type here"
-            />
-           <input id="submit-button" type="submit" value="Say it" />
-          </div>
-      </form>
+      <div id="form-wrapper">
+        <form onSubmit={this.handleSubmit}>
+          <p id="input-description">
+            Write me something and let the yackering ensue!
+          </p>
+            <div id="text-and-submit">
+              <input id="text-input"
+                type="text"
+                autoFocus
+                value={this.state.textFieldValue}            
+                onChange={this.handleFieldValueChange}
+                placeholder="type here"
+              />
+            <input id="submit-button" type="submit" value="Say it" />
+            </div>
+        </form>
+      </div>
     );
   }
 }

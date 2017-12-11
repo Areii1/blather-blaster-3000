@@ -9,6 +9,7 @@ body {
   font-family: 'PT-Sans', sans-serif;
   height: 700px;
   justify-content: center;
+  display: flex;
 }
 
 #app {
@@ -26,14 +27,24 @@ body {
 #main-header {
   margin-top: 0;
   padding-top: 5%;
-  font-size: 1.7em;
+  font-size: 2em;
+  text-align: left;
+  position: relative;
+  left: 5%;
+  color: #919fdd;
 }
 
 #score {
   color: #919fdd;
+  position: absolute;
+  top: 80%;
+  left: 47%;
 }
 
 #talking-head {
+  display: block;
+  float: left;
+  margin-top: 2%;
   width: 20%;
-  height: 10%;
+  height: 15%;
 }

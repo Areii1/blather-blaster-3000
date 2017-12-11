@@ -1,3 +1,9 @@
+#concl-wrapper {
+  clear: left;
+  position: relative;
+  top: 20%;
+}
+
 #play-again-button {
   background-color: #2840c1;
   width: 60%;

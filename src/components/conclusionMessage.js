@@ -6,7 +6,7 @@ import vitunVittu from '../media/vitunvittu.mp3';
 
 export function ConclusionMessage(props) {
   return (
-    <div>
+    <div id="concl-wrapper">
       {props.answer && (
         <h3 className="msg">You are correct</h3>
       )}

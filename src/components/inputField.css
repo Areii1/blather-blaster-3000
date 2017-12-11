@@ -1,6 +1,12 @@
 #input-description {
   font-size: 0.8em;
   color: #919fdd;
+  text-align: left;
+}
+
+#form-wrapper {
+  position: relative;
+  top: 20%;
 }
 
 #text-input {
