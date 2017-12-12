@@ -3,6 +3,7 @@
   flex-direction: column;
   align-items: center;
   margin-top: -11px;
+  max-width: 100%;
 }
 
 #button-list {
