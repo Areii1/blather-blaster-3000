@@ -19,9 +19,9 @@ function AnswerButtonList(props) {
         {!props.showSpinner && (
           <p className="list-msg">What language did we just hear?</p>
         )}
-      <div id="list-wrapper">
+      <ul id="button-list">
         {listItems}
-      </div>
+      </ul>
     </div>
   );
 }

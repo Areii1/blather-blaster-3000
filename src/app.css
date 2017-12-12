@@ -2,7 +2,6 @@
 
 html {
   height: 100%;
-  border: none;
 }
 
 :root {
@@ -46,6 +45,7 @@ body {
 #main-header {
   width: 100%;
   margin-top: 0;
+  font-size: 2.5rem;
 
   text-align: center;
 }
@@ -53,9 +53,10 @@ body {
 #score {
   color: var(--p-color);
   text-align: center;
+  font-size: 1.5rem;
 }
 
 #talking-head {
-  width: 120px;
-  height: 120px;
+  width: 90px;
+  height: 90px;
 }

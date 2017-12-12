@@ -93,7 +93,6 @@ class App extends Component {
         )}
 
         {this.state.gameProcess === 1 && (
-          <div>
             <AnswerButtonList
               optionsList={this.state.randomLanguageOptions}
               rightAnswerName={this.rightAnswerName}
@@ -101,7 +100,6 @@ class App extends Component {
               checkAnswer={this.checkAnswer}
               showSpinner={this.state.showSpinner}
             />
-          </div>
         )}
 
         {this.state.gameProcess === 2 && (

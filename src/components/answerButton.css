@@ -7,12 +7,12 @@
   width: 100%;
   padding: 10px;
   border: none;
-  outline: none;  
-  
+  outline: none;
+  font-size: 1rem;
 }
 
 li {
-  width: 100%;
+  width: 100%;  
 }
 
 .answer-button:hover {

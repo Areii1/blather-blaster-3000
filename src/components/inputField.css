@@ -3,6 +3,7 @@
 #input-description {
   color: var(--p-color);
   text-align: center;
+  font-size: 1.3rem;
 }
 
 #text-and-submit {
@@ -14,6 +15,7 @@
 #text-input {
   padding: 10px;
   width: 60%;
+  font-size: 1.3rem;
 }
 
 #submit-button {
