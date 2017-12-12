@@ -1,7 +1,7 @@
 .answer-button {
   font-weight: bold;
   background-color: #2840c1;
-  color: #919fdd;
+  color: var(--p-color);
   overflow: hidden;
   opacity: 0.8;
   width: 100%;
@@ -15,6 +15,7 @@ li {
 
 .answer-button:hover {
   color: white; 
-  box-shadow: 0px 11px 27px 0px rgba(40,64,193,1);
   cursor: pointer;
+  background-color: #334bc2;
+  box-shadow: 0px 0px 20px 0px #2840c1;
 } 

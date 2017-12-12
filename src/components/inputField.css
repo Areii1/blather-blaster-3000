@@ -1,8 +1,14 @@
 @import url('https://fonts.googleapis.com/css?family=Nunito|PT+Sans');
 
 #input-description {
-  color: #919fdd;
+  color: var(--p-color);
   text-align: center;
+}
+
+#text-and-submit {
+  opacity: 0.8;
+  display: flex;
+  justify-content: center;
 }
 
 #text-input {
@@ -16,15 +22,12 @@
   font-weight: bold;
   background: radial-gradient(bottom, #4923bf 10%, #2840c1 60%);
   border: none;
-  box-shadow: 0px 0px 25px 0px rgba(40,64,193,1);
+  box-shadow: 0px 0px 20px 0px #2840c1;
   cursor: pointer;  
+  text-transform: uppercase;  
 }
 
 #submit-button:hover {
-  background: #8b99e0;
+  background: radial-gradient(bottom, #4923bf 10%, #344cc2 60%);
 }
 
-#text-and-submit {
-  opacity: 0.8;
-  width: 100%;
-}

@@ -1,38 +1,46 @@
 @import url('https://fonts.googleapis.com/css?family=Nunito|PT+Sans');
 
-/*
-position relativet pois
-pienet prosentit pois (px
-floatit ja clearit pois (flexbox)
-height kovakoodaus pois
-muuttujat käyttöön
-buttonit yhteiseen luokkaan
-*/
+html {
+  height: 100%;
+}
 
 :root {
-  --hello: #fff;
+  --body-top: #4923bf;
+  --body-bottom: #45007a;
+  --app-top: #141a4a;
+  --app-bottom: #3d0e7b;
+  --p-color: #919fdd;
+  --button-blue: #2840c1;
+  --button-blue-hover: #344cc2;
 }
 
 body {
-  background: linear-gradient(to right top, #45007a, #4923bf 40%);
+  background: linear-gradient(to right top, var(--body-bottom), var(--body-top) 40%);
   font-family: 'PT-Sans', sans-serif;
   display: flex;
-  justify-content: center;
-  
+  justify-content: center;  
 }
 
 #app {
-  background: linear-gradient(to right top, #3d0e7b, #141a4a 40%);
+  background: linear-gradient(to right top, var(--app-bottom), var(--app-top) 40%);
   color: white;
   padding: 20px 20px 0 20px;
-  max-width: 600px;
-  box-shadow: -11px 10px 35px 1px rgba(20,26,74,1);
+  max-width: 400px;
+  height: 500px;
+  box-shadow: -11px 10px 35px 1px var(--app-top);
 
   /*positioning*/
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-between;
   flex-direction: column;
+}
+
+#header-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
 }
 
 #main-header {
@@ -43,14 +51,11 @@ body {
 }
 
 #score {
-  color: #919fdd;
-
+  color: var(--p-color);
   text-align: center;
 }
 
 #talking-head {
-  width: 100px;
-  height: 100px;
-
-  align-self: center;
+  width: 120px;
+  height: 120px;
 }

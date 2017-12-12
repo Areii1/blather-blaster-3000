@@ -83,8 +83,11 @@ class App extends Component {
   render() {
     return ( 
       <div id="app">
-        <h1 id="main-header">Blather Blaster 3000</h1>
-        <img src={talkinghead} id="talking-head" alt="talkinghead"/>
+        <div id="header-wrapper">
+          <h1 id="main-header">Blather Blaster 3000</h1>
+          <img src={talkinghead} id="talking-head" alt="talkinghead"/>
+        </div>
+        
         {this.state.gameProcess === 0 && (
           <Inputfield onSubmit={this.translateText} />
         )}
