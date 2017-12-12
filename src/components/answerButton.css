@@ -1,14 +1,20 @@
 .answer-button {
   font-weight: bold;
   background-color: #2840c1;
-  width: 60%;
-  color: white;
-  border: 1px solid #141a4a;
-  padding: 3%;
+  color: #919fdd;
   overflow: hidden;
   opacity: 0.8;
+  width: 100%;
+  padding: 10px;
+  border: none;
+}
+
+li {
+  width: 60%;
 }
 
 .answer-button:hover {
-  background-color: #8b99e0;
-}
+  color: white; 
+  box-shadow: 0px 11px 27px 0px rgba(40,64,193,1);
+  cursor: pointer;
+} 

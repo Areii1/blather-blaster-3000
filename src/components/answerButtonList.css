@@ -1,16 +1,13 @@
-#list-wrapper {
-  clear: left;
-  position: relative;
-  top: 50%;
-}
-
 ul {
   list-style-type: none;
   padding: 0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .list-msg {
   text-align: center;
-  font-size: 0.8em;
   color: #919fdd;
 }

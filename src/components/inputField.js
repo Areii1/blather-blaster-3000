@@ -28,11 +28,12 @@ class Inputfield extends Component {
       <div id="form-wrapper">
         <form onSubmit={this.handleSubmit}>
           <p id="input-description">
-            Write me something and let the yackering ensue!
+            Write me something and listen :)
           </p>
             <div id="text-and-submit">
               <input id="text-input"
                 type="text"
+                autoComplete="off"
                 autoFocus
                 value={this.state.textFieldValue}            
                 onChange={this.handleFieldValueChange}

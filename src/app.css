@@ -1,50 +1,56 @@
 @import url('https://fonts.googleapis.com/css?family=Nunito|PT+Sans');
 
-* { 
-  box-sizing: border-box;
+/*
+position relativet pois
+pienet prosentit pois (px
+floatit ja clearit pois (flexbox)
+height kovakoodaus pois
+muuttujat käyttöön
+buttonit yhteiseen luokkaan
+*/
+
+:root {
+  --hello: #fff;
 }
 
 body {
-  background: linear-gradient(to right top, #45007a, #4923bf );
+  background: linear-gradient(to right top, #45007a, #4923bf 40%);
   font-family: 'PT-Sans', sans-serif;
-  height: 700px;
-  justify-content: center;
   display: flex;
+  justify-content: center;
+  
 }
 
 #app {
-  background: linear-gradient(to right top, #3d0e7b, #141a4a);
+  background: linear-gradient(to right top, #3d0e7b, #141a4a 40%);
   color: white;
-  padding: 0 5% 0 5%;
-  max-width: 500px;
-  height: 550px;
-  text-align: center;
-  border-radius: 5%;
-  border: groove;
-  display: inline-block;
+  padding: 20px 20px 0 20px;
+  max-width: 600px;
+  box-shadow: -11px 10px 35px 1px rgba(20,26,74,1);
+
+  /*positioning*/
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  flex-direction: column;
 }
 
 #main-header {
+  width: 100%;
   margin-top: 0;
-  padding-top: 5%;
-  font-size: 2em;
-  text-align: left;
-  position: relative;
-  left: 5%;
-  color: #919fdd;
+
+  text-align: center;
 }
 
 #score {
   color: #919fdd;
-  position: absolute;
-  top: 80%;
-  left: 47%;
+
+  text-align: center;
 }
 
 #talking-head {
-  display: block;
-  float: left;
-  margin-top: 2%;
-  width: 20%;
-  height: 15%;
+  width: 100px;
+  height: 100px;
+
+  align-self: center;
 }

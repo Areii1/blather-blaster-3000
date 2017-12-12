@@ -1,37 +1,30 @@
-#input-description {
-  font-size: 0.8em;
-  color: #919fdd;
-  text-align: left;
-}
+@import url('https://fonts.googleapis.com/css?family=Nunito|PT+Sans');
 
-#form-wrapper {
-  position: relative;
-  top: 20%;
+#input-description {
+  color: #919fdd;
+  text-align: center;
 }
 
 #text-input {
-  padding: 3%;
-  display: block;
-  float: left;
-  width: 70%;
+  padding: 10px;
+  width: 60%;
 }
 
 #submit-button {
-  background-color: #2840c1;
   color: white;
-  border: 1px solid black;
-  padding: 3% 0 3% 0;
-  width: 20%;
+  padding: 12px;
   font-weight: bold;
+  background: radial-gradient(bottom, #4923bf 10%, #2840c1 60%);
+  border: none;
+  box-shadow: 0px 0px 25px 0px rgba(40,64,193,1);
+  cursor: pointer;  
 }
 
 #submit-button:hover {
-  background-color: #8b99e0;
+  background: #8b99e0;
 }
 
 #text-and-submit {
   opacity: 0.8;
   width: 100%;
-  border: 7px groove white;
-  border-radius: 5%;
 }
