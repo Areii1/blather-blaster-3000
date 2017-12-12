@@ -29,31 +29,24 @@ body {
   height: 500px;
   box-shadow: -11px 10px 35px 1px var(--app-top);
 
-  /*positioning*/
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
   flex-direction: column;
-}
-
-#header-wrapper {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  text-align: center;
+  justify-content: space-between;
 }
 
 #main-header {
   width: 100%;
   margin-top: 0;
-  font-size: 1.6rem;
-
+  font-size: 2rem;
   text-align: center;
 }
 
 #score {
   color: var(--p-color);
   text-align: center;
-  font-size: 1.3rem;
+  font-size: 1rem;
 }
 
 #talking-head {
