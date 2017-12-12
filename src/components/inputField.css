@@ -24,10 +24,10 @@
   border: none;
   box-shadow: 0px 0px 20px 0px #2840c1;
   cursor: pointer;  
-  text-transform: uppercase;  
+  text-transform: uppercase;
+  outline: none;  
 }
 
 #submit-button:hover {
   background: radial-gradient(bottom, #4923bf 10%, #344cc2 60%);
 }
-

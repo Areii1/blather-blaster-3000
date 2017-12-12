@@ -3,7 +3,7 @@ import './answerButton.css';
 
 function AnswerButton(props) {
   return (
-    <li class="buttonListElement">
+    <li className="buttonListElement">
       <button className="answer-button" onClick={() => {
         props.checkAnswer(props.label)
       }}>

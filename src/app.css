@@ -2,6 +2,7 @@
 
 html {
   height: 100%;
+  border: none;
 }
 
 :root {
@@ -40,7 +41,6 @@ body {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-
 }
 
 #main-header {

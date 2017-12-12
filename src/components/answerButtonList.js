@@ -12,16 +12,16 @@ function AnswerButtonList(props) {
     />
   );
   return (
-    <div id="list-wrapper">
-      <ul>
+    <div id="answers-wrapper">
         {props.showSpinner && (
           <p className="list-msg">loading</p>
         )}
         {!props.showSpinner && (
           <p className="list-msg">What language did we just hear?</p>
         )}
+      <div id="list-wrapper">
         {listItems}
-      </ul>
+      </div>
     </div>
   );
 }
